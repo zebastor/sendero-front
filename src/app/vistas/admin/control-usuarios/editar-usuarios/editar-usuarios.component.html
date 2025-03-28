@@ -1,0 +1,49 @@
+<app-header></app-header>
+<body>
+<div class="card update-card">
+  <h1>Actualizar usuario</h1>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <form *ngIf="usuario" (ngSubmit)="actualizarDatos()" #usuarioForm="ngForm">
+        
+        <!-- Input oculto para el id -->
+        <input type="hidden" name="id" [(ngModel)]="usuario.id">
+        
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" [(ngModel)]="usuario.nombre" type="text" name="nombre" placeholder="Digite el nombre" required class="input-field">
+        </div>
+        
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" [(ngModel)]="usuario.username" type="text" name="username" placeholder="Digite el username" required class="input-field">
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" [(ngModel)]="usuario.password" type="password" name="password" placeholder="Digite el password" required class="input-field">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" [(ngModel)]="usuario.email" type="email" name="email" placeholder="Digite el email" required class="input-field">
+        </div>
+        
+        <!-- Sección de Roles -->
+        <div class="form-group">
+          <label for="roles">Roles</label>
+          <select id="roles" name="roles" class="input-field" [(ngModel)]="usuario.rolId">
+            <option *ngFor="let rol of rolesList" [value]="rol.rolId">
+              {{ rol.rolNombre }}
+            </option>
+          </select>
+        </div>
+        
+        <div class="text-center">
+          <button type="submit" class="btn">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>

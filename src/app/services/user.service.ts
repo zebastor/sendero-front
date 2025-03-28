@@ -14,4 +14,21 @@ export class UserService {
       return this.httpClient.post(`${baserUrl}/usuarios/`,user);
     }
 
+
+    public listarUsuarios(){
+      return this.httpClient.get(`${baserUrl}/usuario/`);
+    }
+
+    public eliminarUsuario(id:any){
+      return this.httpClient.delete(`${baserUrl}/usuario/${id}`);
+    }
+
+    public obtenerUsuariox(username:any){
+      return this.httpClient.get(`${baserUrl}/usuario/${username}`);
+    }
+
+    public guardarUsuariox(username:any){
+      return this.httpClient.put(`${baserUrl}/usuario/`,username);
+    }
+
 }

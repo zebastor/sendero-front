@@ -1,0 +1,24 @@
+<app-header></app-header>
+<body>
+  <div class="cards-grid">
+    <div class="card" *ngFor="let e of usuarios">
+      <div class="card-body">
+        <h3 class="card-text">ID: {{ e.id }}</h3>
+        <h4 class="card-title">Usuario: {{ e.username }}</h4>
+        <h4 class="card-title">Nombre: {{ e.nombre }}</h4>
+        <h4 class="card-text">Correo: {{ e.email }}</h4>
+        <h4 class="card-text">Rol: {{ e.authorities[0]?.authority }}</h4>
+        <div class="card-actions">
+          <button class="btn" *ngIf="e.id !== 1" (click)="eliminarUsuario(e.id)">Eliminar</button>
+          <button [routerLink]="'/editar-usuarios/' + e.username" mat-flat-button color="primary" class="ml20">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center mt20">
+    <button class="btn" routerLink="/admin/agregar-usuario">
+      Agregar usuario
+    </button>
+  </div>
+</body>
