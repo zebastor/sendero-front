@@ -6,8 +6,19 @@
         <li><a >Sendero Ecologico</a></li>
     </ul>
     <!-- Lista de navegación; se muestra u oculta según isMenuOpen -->
-    <ul class="nav-links" [class.active]="isMenuOpen">
-      <li><a routerLink="/services" (click)="toggleMenu()">Estaciones</a></li>
+  <ul class="nav-links" [class.active]="isMenuOpen">
+  <li style="position: relative;">
+    <a #toggleEstacionesRef  (click)="toggleEstaciones()">Estaciones</a>
+    <ul *ngIf="mostrarEstaciones" class="dropdown-menu">
+      <li *ngFor="let e of estaciones">
+        <a [routerLink]="['/services']" (click)="toggleMenu()">
+          Estación {{ e.numero }} - {{ e.nombre }}
+        </a>
+      </li>
+    </ul>
+  </li>
+
+      
       <li><a routerLink="/services" (click)="toggleMenu()">Mapa</a></li>
       <li><a routerLink="/services" (click)="toggleMenu()">Actividades</a></li>
       <li><a *ngIf="isLoggedIn && user">
@@ -32,6 +43,8 @@
   
   <body>
 
+
+
     <div class="container2">
         <h1>Bienvenido al Sendero Ecológico</h1>
         <p>Explora la naturaleza y disfruta de nuestras actividades al aire libre.</p>
@@ -39,7 +52,52 @@
     </div>
     <div class="map-container">
         <h2>Mapa del Sendero</h2>
-        <img src="mapa.jpg" alt="Mapa del Sendero" />
+       <!-- <img src="mapa.jpg" alt="Mapa del Sendero" />-->
         <p>Descubre las estaciones y actividades disponibles.</p>
     </div>
+
+
+    <div class="cards-grid">
+      <div class="card" *ngFor="let e of estaciones">
+        <div class="card-body">
+          <h3 class="card-text">ID: {{ e.id }}</h3>
+          <h4 class="card-title">Nombre: {{ e.nombre }}</h4>
+          <p>Número: {{ e.numero }}</p>
+          <p>Latitud: {{ e.latitud }}</p>
+          <p>Longitud: {{ e.longitud }}</p>
+          <p>Elemento Interactivo: {{ e.elementoInteractivo }}</p>
+    
+          <div *ngIf="e.especimenes?.length">
+            <h5>Especímenes:</h5>
+            <ul>
+              <li *ngFor="let especimen of e.especimenes">
+                <strong>Nombre:</strong> {{ especimen.nombre }} <br>
+                <strong>Reino:</strong> {{ especimen.reino?.nombre }}
+    
+                <div *ngIf="especimen.etapas?.length">
+                  <p><strong>Etapas:</strong></p>
+                  <ul>
+                    <li *ngFor="let etapa of especimen.etapas">
+                      {{ etapa.nombre }}
+                    </li>
+                  </ul>
+                </div>
+    
+                <div *ngIf="especimen.imagenes?.length">
+                  <p><strong>Imágenes:</strong></p>
+                  <ul>
+                    <li *ngFor="let img of especimen.imagenes">
+                      {{ img.direccion }}
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
   </body>

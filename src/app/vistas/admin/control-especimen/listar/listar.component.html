@@ -1,0 +1,81 @@
+<app-header></app-header>
+<body>
+<div class="cards-grid">
+  <div class="card" *ngFor="let e of especimenes">
+    <!-- Contenedor de contenido scrollable -->
+    <div class="card-content">
+      <h3 class="card-text">ID: {{ e.id }}</h3>
+      <h4 class="card-title">Nombre: {{ e.nombre }}</h4>
+      <p class="card-description">Descripción: {{ e.descripcion }}</p>
+  
+      <!-- Mostrar Etapas -->
+      <div *ngIf="e.etapas && e.etapas.length > 0">
+        <p>Etapas:</p>
+        <ul>
+          <li *ngFor="let etapa of e.etapas">{{ etapa.nombre }}</li>
+        </ul>
+      </div>
+  
+      <!-- Mostrar Imágenes -->
+      <div class="imagenes" *ngIf="e.imagenes && e.imagenes.length > 0">
+        <p>Imagenes:</p>
+        <ul>
+          <li *ngFor="let imagen of e.imagenes">
+            <img
+              [src]="baseUrl + '/files/' + imagen.direccion"
+              alt="Imagen de {{ e.nombre }}"
+              (error)="handleImageError($event)"
+              class="specimen-image"
+              [style.width.px]="imageWidth"
+              [style.height.px]="imageHeight"
+            />
+          </li>
+        </ul>
+      </div>
+  
+<!-- Mostrar Imágenes 3D -->
+<div class="imagenes" *ngIf="e.imagenes3d && e.imagenes3d.length > 0">
+  <p>Imagenes 3d:</p>
+  <ul>
+    <li *ngFor="let imagen3d of e.imagenes3d">
+      <model-viewer
+        [attr.src]="imagen3d.direccion.endsWith('.glb') ? baseUrl + '/files3d/' + imagen3d.direccion : null"
+    
+        alt="Imagen de {{ e.nombre }}"
+        (error)="handleImageError($event)"
+        class="specimen-image"
+        [style.width.px]="imageWidth"
+        [style.height.px]="imageHeight"
+        ar
+        ar-modes="scene-viewer webxr quick-look"
+        camera-controls
+        touch-action="pan-y"
+        tone-mapping="neutral"
+        shadow-intensity="1"
+      >
+      </model-viewer>
+    </li>
+  </ul>
+</div>
+
+  
+  
+      <!-- Mostrar Reino -->
+      <div *ngIf="e.reino">
+        <p>Reino: {{ e.reino.nombre }}</p>
+      </div>
+    </div>
+  
+    <!-- Área fija de acciones, fuera del scroll -->
+    <div class="card-actions">
+      <button class="btn" *ngIf="e.id !== 1" (click)="eliminarEspecimen(e.id)">Eliminar</button>
+      <button [routerLink]="'/editar-especimen/' + e.id" mat-flat-button color="primary" class="ml20">
+        Actualizar
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+</body>

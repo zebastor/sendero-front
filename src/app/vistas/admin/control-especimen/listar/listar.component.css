@@ -1,0 +1,100 @@
+.preview-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin: 5px 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 1rem;
+  color: #333;
+  margin-top: 150px;
+}
+
+/* Grid de tarjetas responsive */
+.cards-grid {
+  display: grid;
+  /* Se reduce el tamaño mínimo de la columna para dispositivos pequeños */
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-height: 20vh; /* Altura mínima de la tarjeta */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: auto; /* Usa auto para que solo aparezca el scroll cuando sea necesario */
+  max-height: 80vh;
+  background: #fff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.card a {
+  display: inline-block;
+  text-decoration: none;
+  background: #007bff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.card a:hover {
+  background: #0056b3;
+}
+
+.imagenes li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.card-actions {
+  background-color: #f5f5f5; /* Color de fondo del área de acciones */
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.card-content {
+  flex: 1; /* Ocupa el espacio vertical disponible */
+  padding: 10px;
+  overflow-y: auto; /* Habilita scroll vertical cuando el contenido excede el contenedor */
+  box-sizing: border-box;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: 1fr; /* Una sola columna en dispositivos pequeños */
+    padding: 0.5rem;
+  }
+  body {
+    margin-top: 100px;
+    padding: 0.5rem;
+  }
+  .card {
+    max-height: none; /* Permite que la tarjeta se adapte a la altura de su contenido */
+  }
+}
+.boody {margin-top: 300px;}

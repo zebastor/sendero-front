@@ -1,0 +1,168 @@
+
+
+
+
+
+
+
+
+
+
+<div class="card update-card">
+  <h1>Actualizar especimen</h1>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <form *ngIf="especimen" (ngSubmit)="actualizarDatos()" #usuarioForm="ngForm" enctype="multipart/form-data">
+        
+        <!-- Input oculto para el id -->
+        <input type="hidden" name="id" [(ngModel)]="especimen.id">
+        
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" [(ngModel)]="especimen.nombre" type="text" name="nombre" placeholder="Digite el nombre" required class="input-field">
+        </div>
+        
+        <div class="form-group">
+          <label for="descripcion">Descripcion</label>
+          <input id="descripcion" [(ngModel)]="especimen.descripcion" type="text" name="descripcion" placeholder="Digite el descripcion" required class="input-field">
+        </div>
+
+     
+
+        <div class="form-group">
+          <label for="reino">Reino</label>
+          <select 
+            id="reino" 
+            name="reino" 
+            [(ngModel)]="especimen.reino" 
+            required 
+            class="input-field"
+            [compareWith]="compareReinos"  
+          >
+            <!-- Solo muestra el placeholder si no existe un reino seleccionado -->
+            <option *ngIf="!especimen.reino || !especimen.reino.nombre" [ngValue]="null" disabled>
+              --Seleccione un reino--
+            </option>
+            <option *ngFor="let reino of reinos" [ngValue]="reino">
+              {{ reino.nombre }}
+            </option>
+          </select>
+        </div>
+        
+
+
+        <div class="form-group">
+          <label for="etapas">Etapas</label>
+          <select 
+            id="etapas" 
+            name="etapas" 
+            multiple
+            [(ngModel)]="especimen.etapas"
+            required 
+            class="input-field"
+            [compareWith]="compareEtapas">
+            <option *ngFor="let etapa of etapas" [ngValue]="etapa">
+              {{ etapa.nombre }}
+            </option>
+          </select>
+        </div>
+        
+
+        <div class="imagenes" *ngIf="especimen.imagenes && especimen.imagenes.length > 0">
+          <p>Imagenes:</p>
+          <ul>
+            <li *ngFor="let imagen of especimen.imagenes">
+              <img
+                [src]="baseUrl + '/files/' + imagen.direccion"
+                alt="Imagen de {{ especimen.nombre }}"
+                (error)="handleImageError($event)"
+                class="specimen-image"
+                [style.width.px]="imageWidth"
+                [style.height.px]="imageHeight"
+              />
+              <button 
+              class="btn" 
+              type="button"
+              (click)="eliminarImagen(imagen.id, imagen.direccion)">
+              Eliminar
+            </button>
+            </li>
+          </ul>
+        </div>
+
+     <!-- Mostrar modelos 3D -->
+<div class="imagenes" *ngIf="especimen.imagenes3d && especimen.imagenes3d.length > 0">
+  <p>Modelos 3D:</p>
+  <ul>
+    <li *ngFor="let imagen3d of especimen.imagenes3d">
+              <model-viewer
+                [src]="baseUrl + '/files3d/' + imagen3d.direccion"
+                alt="Imagen de {{ especimen.nombre }}"
+                (error)="handleImageError($event)"
+                class="specimen-image"
+                [style.width.px]="imageWidth"
+                [style.height.px]="imageHeight"
+                ar
+                ar-modes="scene-viewer webxr quick-look"
+                camera-controls
+                touch-action="pan-y"
+                tone-mapping="neutral"
+                shadow-intensity="1"
+              > </model-viewer>
+      <button 
+        type="button" 
+        class="btn"
+        (click)="eliminarImagen3d(imagen3d.id, imagen3d.direccion)">
+        Eliminar
+      </button>
+    </li>
+  </ul>
+</div>
+   
+
+
+        <div class="form-group">
+          <label for="imagen">Agregar Imagen(es)</label>
+          <input
+            type="file"
+            id="imagen"
+            (change)="onFileSelected($event)"
+            name="file"
+            multiple  
+            required
+            accept="image/*">
+        </div>
+        
+        <div class="form-group">
+          <label for="imagen3d">Agregar Imagenes3d</label>
+          <input
+            type="file"
+            id="imagen3d"
+            (change)="onFileSelected3d($event)"
+            name="file3d"
+            multiple  
+            required
+            accept=".glb, .usdz">
+        </div>
+        
+        
+        
+        
+        <div class="text-center">
+          <button type="button" class="btn" (click)="subirYActualizar()">Guardar</button>
+          <button 
+          class="btn" 
+          type="buttondelete"
+          href="/listar">Volver
+        </button>
+
+        </div>
+    
+      </form>
+    </div>
+  </div>
+</div>
+<script
+  type="module"
+  src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+></script>
