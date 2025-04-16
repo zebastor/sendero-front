@@ -1,0 +1,26 @@
+<app-header></app-header>
+<body>
+  <div class="cards-grid">
+    <div class="card" *ngFor="let a of actividadesDisponibles">
+      <div class="card-body">
+        <h3 class="card-text">ID: {{ a.id }}</h3>
+        <h4 class="card-title">Titulo: {{ a.titulo }}</h4>
+        <h4 class="card-title">Fecha: {{ a.fecha | date:'fullDate' }}</h4>
+        <h4 class="card-title">Hora: {{ a.fecha | date:'hh:mm a' }}</h4>
+        
+        <div *ngIf="a.estacion">
+          <p>Estación: {{ a.estacion.nombre }}</p>
+        </div>
+
+        <div class="card-actions">
+          <!-- Se muestra "Cancelar" si el usuario ya está inscrito, de lo contrario "Inscribirme" -->
+          <button class="btn" (click)="(isUsuarioInscrito(a) ? cancelarUsuarioActividad(a.id) : agregarUsuarioActividad(a.id))">
+            {{ isUsuarioInscrito(a) ? 'Cancelar' : 'Inscribirme' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</body>

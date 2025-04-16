@@ -1,0 +1,209 @@
+  
+  /* Estilos Globales */
+  body {
+    font-family: Arial, sans-serif;    
+  }
+  
+
+/* Opcional: efecto hover para mejorar la experiencia del usuario */
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
+
+
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 2px; /* Padding inicial más grande */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #000000;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+  }
+  
+
+.header li a{
+  color: #6b4b40;
+  text-decoration: none;
+  font-size: 35px;
+  font-weight: 600;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+
+.dropdown-menu li a {
+  font-size: 20px;
+ }
+
+ 
+ 
+  .container2{
+    margin-top: 170px;
+  }
+  
+  .logo img {
+    width: 80px;  /* Ancho personalizado */
+    height: 80px;  /* Alto personalizado */
+    object-fit: contain;
+    margin: 20px; /* Para asegurar que la imagen se ajuste sin distorsionarse */
+  }
+  
+  .nav-titulo{
+    list-style: none;
+  
+    margin-left: 20px;
+    padding: 0;
+    margin-right: auto;
+  }
+
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  
+  
+  }
+  
+    /* Alineación a la derecha en modo escritorio */
+    @media (min-width: 769px) {
+      .dropdown-menu {
+        width: 40vh; /* Ajusta el ancho al contenido */
+        position: absolute;           /* Se posiciona relativamente al <li> padre */
+        top: 100%;                    /* Se sitúa justo debajo del enlace "Estaciones" */
+        left: 0;
+        background-color: #fff;       /* Fondo blanco para la tarjeta */
+        border: 1px solid #ccc;       /* Borde para delimitar la tarjeta */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para darle efecto de superposición */
+        padding: 10px;
+        margin: 0;
+        list-style: none;             /* Sin viñetas */
+        z-index: 1300;                /* Asegura que se muestre encima de otros elementos */
+      }
+
+  
+  
+  
+}
+  
+  
+  
+  /* Menú Toggle (Móvil) */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 9999; /* Asegura que esté sobre el menú */
+    margin-right: 20px;
+  
+    span {
+      width: 25px;
+      height: 3px;
+      background-color: rgb(0, 0, 0);
+      margin: 3px 0;
+      transition: all 0.5s ease; /* Animación para transformar el ícono */
+      position: relative; /* Permite ajustes precisos */
+    }
+  
+    &.active span:nth-child(1) {
+      transform: rotate(45deg); /* Rotación precisa */
+      top: 9px; /* Ajuste vertical */
+      z-index: 9999;
+    }
+  
+    &.active span:nth-child(2) {
+      opacity: 0; /* Oculta la línea del medio */
+    }
+  
+    &.active span:nth-child(3) {
+      transform: rotate(-45deg); /* Rotación precisa */
+      top: -9px; /* Ajuste vertical */
+    }
+  }
+  
+/* Estilos para Móvil */
+@media (max-width: 768px) {
+  
+  /* Fondo oscuro (overlay) */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Oscurece el fondo con 50% de opacidad */
+    visibility: hidden; /* Oculto inicialmente */
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Transición suave */
+  }
+
+  .overlay.active {
+    visibility: visible;
+    opacity: 1; /* Activa el fondo oscuro */
+  }
+
+  .nav-links {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #6e3939c4; /* Fondo blanco para el menú */
+    position: fixed;
+    top: 0; /* Desde el borde superior */
+    right: 0; /* Pegado al borde derecho */
+    height: 100%; /* Ocupar toda la altura de la pantalla */
+    width: 70%; /* Solo ocupar el 50% del ancho de la pantalla */
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, visibility 0.3s ease; /* Animación suave para entrada/salida */
+    transform: translateX(100%); /* Posición inicial fuera de pantalla */
+    overflow-y: auto; /* Desplazamiento vertical si es necesario */
+    visibility: hidden; /* Oculta el menú inicialmente */
+    z-index: 9999; /* Sobre el fondo oscuro */
+
+    li {
+      
+      cursor: pointer; /* Cursor de mano para los elementos de lista */
+      font-size: clamp(24px, 8vw, 36px); /* Ajusta el tamaño según el ancho de la pantalla */
+      line-height: 1.5; /* Mejor separación entre líneas */
+      word-wrap: break-word; /* Divide las palabras largas */
+      text-align: left; /* Alinea el texto */
+  
+    }
+
+    li a {
+      color: #ffffff;
+      cursor: pointer; /* Cursor de mano para los enlaces */
+      font-size: inherit; /* Usa el mismo tamaño del elemento `li` */
+      display: block; /* Permite que se comporte como un bloque */
+      text-decoration: none;
+    }
+  }
+
+  .nav-links.active {
+    transform: translateX(0); /* Mostrar el menú */
+    visibility: visible; /* Asegura que sea visible */
+  }
+
+  .nav-links.closing {
+    transform: translateX(100%); /* Animación de salida */
+    visibility: visible; /* Asegura que la animación sea visible */
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}

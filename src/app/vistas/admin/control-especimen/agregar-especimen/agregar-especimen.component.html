@@ -1,22 +1,12 @@
-<p>agregar-especimen works!</p>
-
-
-
-
-
-
-
-
-
-
+<app-header></app-header>
+<body>
 <div class="card update-card">
     <h1>Guardar especimen</h1>
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <form *ngIf="especimen" (ngSubmit)="guardarDatos()" #usuarioForm="ngForm" enctype="multipart/form-data">
           
-          <!-- Input oculto para el id -->
-          <input type="text" name="id" [(ngModel)]="especimen.id">
+        
           
           <div class="form-group">
             <label for="nombre">Nombre</label>
@@ -67,59 +57,8 @@
               </option>
             </select>
           </div>
-          
-  
-          <div class="imagenes" *ngIf="especimen.imagenes && especimen.imagenes.length > 0">
-            <p>Imagenes:</p>
-            <ul>
-              <li *ngFor="let imagen of especimen.imagenes">
-                <img
-                  [src]="baseUrl + '/files/' + imagen.direccion"
-                  alt="Imagen de {{ especimen.nombre }}"
-                  (error)="handleImageError($event)"
-                  class="specimen-image"
-                  [style.width.px]="imageWidth"
-                  [style.height.px]="imageHeight"
-                />
-                <button 
-                class="btn" 
-                type="button"
-                (click)="eliminarImagen(imagen.id, imagen.direccion)">
-                Eliminar
-              </button>
-              </li>
-            </ul>
-          </div>
-  
-       <!-- Mostrar modelos 3D -->
-  <div class="imagenes" *ngIf="especimen.imagenes3d && especimen.imagenes3d.length > 0">
-    <p>Modelos 3D:</p>
-    <ul>
-      <li *ngFor="let imagen3d of especimen.imagenes3d">
-                <model-viewer
-                  [src]="baseUrl + '/files3d/' + imagen3d.direccion"
-                  alt="Imagen de {{ especimen.nombre }}"
-                  (error)="handleImageError($event)"
-                  class="specimen-image"
-                  [style.width.px]="imageWidth"
-                  [style.height.px]="imageHeight"
-                  ar
-                  ar-modes="scene-viewer webxr quick-look"
-                  camera-controls
-                  touch-action="pan-y"
-                  tone-mapping="neutral"
-                  shadow-intensity="1"
-                > </model-viewer>
-        <button 
-          type="button" 
-          class="btn"
-          (click)="eliminarImagen3d(imagen3d.id, imagen3d.direccion)">
-          Eliminar
-        </button>
-      </li>
-    </ul>
-  </div>
-     
+ 
+
   
   
           <div class="form-group">
@@ -150,7 +89,7 @@
           
           
           <div class="text-center">
-            <button type="button" class="btn" (click)="subirYActualizar()">Guardar</button>
+            <button type="button" class="btn" (click)="subirYGuardar()">Guardar</button>
             <button 
             class="btn" 
             type="buttondelete"
@@ -163,6 +102,7 @@
       </div>
     </div>
   </div>
+</body>
   <script
     type="module"
     src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"

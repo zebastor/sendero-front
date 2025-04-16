@@ -1,0 +1,85 @@
+<app-header></app-header>
+<body>
+<div class="card update-card">
+    <h1>Guardar actividad</h1>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form *ngIf="actividad" (ngSubmit)="actualizarActividad()" enctype="multipart/form-data">
+          
+        
+          
+          <div class="form-group">
+            <label for="titulo">Titulo</label>
+            <input id="titulo" [(ngModel)]="actividad.titulo" type="text" name="titulo" placeholder="Digite el titulo" required class="input-field">
+          </div>
+          
+          <div class="form-group">
+            <label for="fecha">Fecha y hora</label>
+            <input 
+              id="fecha" 
+              [(ngModel)]="actividad.fecha" 
+              type="datetime-local" 
+              name="fecha" 
+              required 
+              class="input-field">
+          </div>
+          
+  
+       
+  
+          
+  
+  
+  
+          <div class="form-group">
+            <label for="estacion">Estacion</label>
+            <select 
+              id="estacion" 
+              name="estacion" 
+              [(ngModel)]="actividad.estacion"
+              required 
+              class="input-field"
+              [compareWith]="compareEstacion"  
+            >
+              <!-- Solo muestra el placeholder si no existe un reino seleccionado -->
+              <option *ngIf="!actividad.estacion || !actividad.estacion.nombre" [ngValue]="null" disabled>
+                --Seleccione un reino--
+              </option>
+              <option *ngFor="let estacion of estaciones" [ngValue]="estacion">
+                {{ estacion.nombre }}
+              </option>
+            </select>
+          </div>
+ 
+    
+          <div class="form-group">
+            <label for="usuarios">Usuarios</label>
+            <select 
+              id="usuarios" 
+              name="usuarios" 
+              multiple
+              [(ngModel)]="actividad.usuarios"
+              required 
+              class="input-field"
+              [compareWith]="compareUsuarios">
+              <option *ngFor="let usuarios of usuarios" [ngValue]="usuarios">
+                {{ usuarios.username }}
+              </option>
+            </select>
+          </div>
+          
+          
+          
+      
+          
+          
+          <div class="text-center">
+            <button type="submit" class="btn">Guardar</button>
+          </div>
+      
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>

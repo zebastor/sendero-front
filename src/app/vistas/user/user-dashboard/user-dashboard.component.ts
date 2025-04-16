@@ -4,10 +4,12 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EstacionService } from '../../../services/estacion.service';
 import Swal from 'sweetalert2';
+import { HeaderComponent } from '../header/header.component';
+
 
 @Component({
   selector: 'app-user-dashboard',
-  imports: [RouterModule, CommonModule, RouterLink, ],
+  imports: [RouterModule, CommonModule, HeaderComponent],
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.css'],
   styles: [

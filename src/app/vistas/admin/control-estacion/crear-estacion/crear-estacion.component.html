@@ -1,0 +1,67 @@
+<app-header></app-header>
+
+
+
+
+
+
+
+<body>
+<div class="card update-card">
+    <h1>Guardar estacion</h1>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form *ngIf="estacion" (ngSubmit)="CrearEstacion()" enctype="multipart/form-data">
+          
+        
+          
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" [(ngModel)]="estacion.nombre" type="text" name="nombre" placeholder="Digite el nombre" required class="input-field">
+          </div>
+          
+          <div class="form-group">
+            <label for="numero">Numero de estacion</label>
+            <input id="numero" [(ngModel)]="estacion.numero" type="text" name="numero" placeholder="Digite el descripcion" required class="input-field">
+          </div>
+  
+       
+  
+          
+  
+  
+          <div class="form-group">
+            <label for="etapas">Especimenes</label>
+            <select 
+              id="especimenes" 
+              name="especimenes" 
+              multiple
+              [(ngModel)]="estacion.especimenes"
+              required 
+              class="input-field"
+              [compareWith]="compareEspecimenes">
+              <option *ngFor="let especimen of especimenes" [ngValue]="especimen">
+                {{ especimen.nombre }}
+              </option>
+            </select>
+          </div>
+ 
+
+  
+          
+      
+          
+          
+          <div class="text-center">
+            <button type="submit" class="btn">Guardar</button>
+          </div>
+      
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+  <script
+    type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+  ></script>

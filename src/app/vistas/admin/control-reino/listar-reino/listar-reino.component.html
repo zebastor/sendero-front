@@ -1,0 +1,24 @@
+<app-header></app-header>
+<body>
+  <div class="container text-center mt20">
+    <button class="btn" routerLink="/crear-reino">
+      Agregar Reino
+    </button>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card" *ngFor="let r of reinos">
+      <div class="card-body">
+        <h3 class="card-text">ID: {{ r.id }}</h3>
+        <h4 class="card-title">Numero: {{ r.nombre }}</h4>
+     
+        <div class="card-actions">
+          <button class="btn"  (click)="eliminarReino(r.id)">Eliminar</button>
+          <button [routerLink]="'/editar-reino/' + r.id" mat-flat-button color="primary" class="ml20">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>

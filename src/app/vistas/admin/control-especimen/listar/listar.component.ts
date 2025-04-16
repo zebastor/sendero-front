@@ -29,8 +29,8 @@ export class ListarComponent implements OnInit {
   
 
 //
-  public imageWidth: number = 200;  // Ejemplo: 200 píxeles de ancho
-  public imageHeight: number = 200; // Ejemplo: 150 píxeles de alto
+  public imageWidth: number = 200; 
+  public imageHeight: number = 200;
 
   files: FileInfo[] = [];
   

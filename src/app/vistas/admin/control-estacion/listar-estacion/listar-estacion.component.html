@@ -1,0 +1,32 @@
+<app-header></app-header>
+<body>
+  <div class="container text-center mt20">
+    <button class="btn" routerLink="/crear-estacion">
+      Agregar estacion
+    </button>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card" *ngFor="let es of estaciones">
+      <div class="card-body">
+        <h3 class="card-text">ID: {{ es.id }}</h3>
+        <h4 class="card-title">Numero: {{ es.numero }}</h4>
+        <h4 class="card-title">Estacion: {{ es.nombre }}</h4>
+        <h4 class="card-title">Latitud: {{ es.latitud }}</h4>
+        <h4 class="card-title">Longitud: {{ es.longitud }}</h4>
+        <h4 class="card-text">Elemento Interactivo: {{ es.elementoInteractivo }}</h4>
+        <div class="especimenes" *ngIf="es.especimenes && es.especimenes.length > 0">  <p>Especimenes:</p>
+            <ul>
+              <li *ngFor="let especimen of es.especimenes">{{ especimen.nombre }}</li>
+            </ul>
+          </div>
+        <div class="card-actions">
+          <button class="btn"  (click)="eliminarEstacion(es.id)">Eliminar</button>
+          <button [routerLink]="'/editar-estacion/' + es.id" mat-flat-button color="primary" class="ml20">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>

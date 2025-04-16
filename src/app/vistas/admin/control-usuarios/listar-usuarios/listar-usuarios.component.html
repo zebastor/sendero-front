@@ -9,7 +9,12 @@
         <h4 class="card-text">Correo: {{ e.email }}</h4>
         <h4 class="card-text">Rol: {{ e.authorities[0]?.authority }}</h4>
         <div class="card-actions">
-          <button class="btn" *ngIf="e.id !== 1" (click)="eliminarUsuario(e.id)">Eliminar</button>
+          <button class="btn" *ngIf="e.id !== 1"
+        (click)="cambiarEstadoUsuario(e)"
+        [ngClass]="{'btn-danger': e.enabled, 'btn-success': !e.enabled}">
+  {{ e.enabled ? 'Bloquear' : 'Desbloquear' }}
+</button>
+
           <button [routerLink]="'/editar-usuarios/' + e.username" mat-flat-button color="primary" class="ml20">Actualizar</button>
         </div>
       </div>

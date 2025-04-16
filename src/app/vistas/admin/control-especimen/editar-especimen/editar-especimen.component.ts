@@ -11,10 +11,11 @@ import { EtapaService } from '../../../../services/etapa.service';
 import { filter, map } from 'rxjs';
 import { ImagenService } from '../../../../services/imagen.service';
 import { Imagen3dService } from '../../../../services/imagen3d.service';
+import { HeaderComponent } from "../../header/header.component";
 
 @Component({
   selector: 'app-editar-especimen',
-  imports: [CommonModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, HeaderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './editar-especimen.component.html',
   styleUrl: './editar-especimen.component.css'
@@ -23,7 +24,7 @@ import { Imagen3dService } from '../../../../services/imagen3d.service';
 
 export class EditarEspecimenComponent implements OnInit {
 
- public especimen: any = { reino: {}, etapa:{}};
+ public especimen: any = { reino: {}, etapa:[]};
  id: any = {};
 
  public reinos: any[] = [];

@@ -1,1 +1,83 @@
-<p>estacion works!</p>
+<app-header></app-header>
+<body>
+<div class="cards-grid" *ngIf="estacion">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-text">ID: {{ estacion.id }}</h3>
+      <h4 class="card-title">Número: {{ estacion.numero }}</h4>
+      <h4 class="card-title">Nombre: {{ estacion.nombre }}</h4>
+      <p>Latitud: {{ estacion.latitud }}</p>
+      <p>Longitud: {{ estacion.longitud }}</p>
+      <p>Elemento Interactivo: {{ estacion.elementoInteractivo }}</p>
+
+      <div class="imagenes" *ngIf="estacion.especimenes?.length">
+        <p><strong>Especímenes:</strong></p>
+        <ul>
+          <li *ngFor="let especimen of estacion.especimenes">
+            <div>
+              <strong>Nombre:</strong> {{ especimen.nombre }} <br>
+              <strong>Reino:</strong> {{ especimen.reino?.nombre }}<br>
+              <strong>Descripción:</strong> {{ especimen.descripcion }}<br>
+            </div>
+            <div *ngIf="especimen.etapas?.length">
+              <p><strong>Etapas:</strong></p>
+              <ul>
+                <li *ngFor="let etapa of especimen.etapas">
+                  {{ etapa.nombre }}
+                </li>
+              </ul>
+            </div>
+            <div class="imagenes" *ngIf="especimen.imagenes && especimen.imagenes.length > 0">
+                <p>Imagenes:</p>
+                <ul>
+                  <li *ngFor="let imagen of especimen.imagenes">
+                    <img
+                      [src]="baseUrl + '/files/' + imagen.direccion"
+                      alt="Imagen de {{ estacion.nombre }}"
+                      (error)="handleImageError($event)"
+                      class="specimen-image"
+                      [style.width.px]="imageWidth"
+                      [style.height.px]="imageHeight"
+                    />
+                  </li>
+                </ul>
+              </div>
+
+
+       <!-- Mostrar Imágenes 3D -->
+<!-- Mostrar Imágenes 3D -->
+<div class="imagenes" *ngIf="especimen.imagenes3d && especimen.imagenes3d.length > 0">
+    <p>Imágenes 3D:</p>
+    <ul>
+      <li *ngFor="let imagen3d of especimen.imagenes3d">
+        <ng-container *ngIf="plataformaApple ? imagen3d.direccion.endsWith('.usdz') : imagen3d.direccion.endsWith('.glb')">
+          <model-viewer
+            [attr.src]="!plataformaApple ? baseUrl + '/files3d/' + imagen3d.direccion : null"
+            [attr.ios-src]="plataformaApple ? baseUrl + '/files3d/' + imagen3d.direccion : null"
+            alt="Imagen de {{ especimen.nombre }}"
+            (error)="handleImageError($event)"
+            class="specimen-image"
+            [style.width.px]="imageWidth"
+            [style.height.px]="imageHeight"
+            ar
+            ar-modes="scene-viewer webxr quick-look"
+            camera-controls
+            touch-action="pan-y"
+            tone-mapping="neutral"
+            shadow-intensity="1"
+          >
+          </model-viewer>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+  
+  
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>

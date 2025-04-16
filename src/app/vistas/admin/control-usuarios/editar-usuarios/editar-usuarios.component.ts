@@ -38,15 +38,20 @@ export class EditarUsuariosComponent implements OnInit {
     this.userService.obtenerUsuariox(this.username).subscribe(
       (data) => {
         this.usuario = data;
+        // Si el rol no viene asignado, asigna NORMAL por defecto (rolId: 2)
+        if (!this.usuario.rolId) {
+          this.usuario.rolId = 2;
+        }
+        // Limpia el password para que el usuario vuelva a digitarlo
         this.usuario.password = '';
         console.log(this.usuario);
       },
       (error) => {
         console.log(error);
       }
-    )
-
+    );
   }
+  
 
   public actualizarDatos() {
     const payload = {

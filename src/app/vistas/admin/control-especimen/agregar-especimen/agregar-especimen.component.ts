@@ -10,16 +10,24 @@ import { Imagen3dService } from '../../../../services/imagen3d.service';
 import { ReinoService } from '../../../../services/reino.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from "../../header/header.component";
 
 @Component({
   selector: 'app-agregar-especimen',
-  imports: [CommonModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, HeaderComponent],
   templateUrl: './agregar-especimen.component.html',
   styleUrl: './agregar-especimen.component.css'
 })
 export class AgregarEspecimenComponent implements OnInit {
-
-  public especimen: any = { reino: {}, etapa:{}};
+  public especimen: any = {
+    nombre: '',
+    descripcion: '',
+    reino: {},
+    etapas: [],
+    imagenes: [],      // Inicializamos arreglos para las imágenes 2D
+    imagenes3d: []     // y para las imágenes 3D
+  };
+  
   id: any = {};
  
   public reinos: any[] = [];
@@ -113,37 +121,31 @@ export class AgregarEspecimenComponent implements OnInit {
  
  
  
- 
    public guardarDatos() {
-     const imagen = {
-       direccion: this.imagenNombre
-     };
- 
-     const imagen3d = {
-       direccion: this.imagen3dNombre
-     };
-   
-     const payload = {
-       nombre: this.especimen.nombre,
-       descripcion: this.especimen.descripcion,
-       reino: this.especimen.reino,
-       etapas: this.especimen.etapas,
-     imagenes: this.especimen.imagenes,
-     imagenes3d: this.especimen.imagenes3d 
-     };
-   
-     this.especimenService.añadirEspecimen(payload).subscribe(
-       (data) => {
-         Swal.fire('Especimen agregado', 'El especimen ha sido agregado con éxito', 'success').then(() => {
-           this.router.navigate(['/listar']);
-         });
-       },
-       (error) => {
-         Swal.fire('Error en el sistema', 'No se ha podido agregar el especimen', 'error');
-         console.log(error);
-       }
-     );
-   }
+    // Preparamos el payload. En este caso, simplemente tomamos las propiedades
+    // ya asignadas a this.especimen. 
+    const payload = {
+      nombre: this.especimen.nombre,
+      descripcion: this.especimen.descripcion,
+      reino: this.especimen.reino,
+      etapas: this.especimen.etapas,
+      imagenes: this.especimen.imagenes,       // Arreglo ya cargado de objetos { direccion: string }
+      imagenes3d: this.especimen.imagenes3d    // Arreglo ya cargado de objetos { direccion: string }
+    };
+  
+    this.especimenService.añadirEspecimen(payload).subscribe(
+      (data) => {
+        Swal.fire('Especimen agregado', 'El especimen ha sido agregado con éxito', 'success').then(() => {
+          this.router.navigate(['/listar']);
+        });
+      },
+      (error) => {
+        Swal.fire('Error en el sistema', 'No se ha podido agregar el especimen', 'error');
+        console.log(error);
+      }
+    );
+  }
+  
  
  
    
@@ -151,68 +153,77 @@ export class AgregarEspecimenComponent implements OnInit {
  // Modifica el método subirYActualizar
  // Modificar el método subirYActualizar
  subirYGuardar(): void {
-   if (!this.selectedFiles.length && !this.selectedFiles3d.length) {
-     Swal.fire('Error', 'Seleccione al menos un archivo (imagen o 3D)', 'error');
-     return;
-   }
- 
-   const uploadPromises: { type: '2d' | '3d', promise: Promise<any> }[] = [];
- 
-   if (this.selectedFiles.length > 0) {
-     const formData = new FormData();
-     this.selectedFiles.forEach(file => formData.append('file', file));
-     
-     uploadPromises.push({
-       type: '2d',
-       promise: this.http.post(`${baserUrl}/upload`, formData, { observe: 'response' }).toPromise()
-     });
-   }
- 
-   if (this.selectedFiles3d.length > 0) {
-     const formData3d = new FormData();
-     this.selectedFiles3d.forEach(file => formData3d.append('file', file));
-     
-     uploadPromises.push({
-       type: '3d',
-       promise: this.http.post(`${baserUrl}/upload3d`, formData3d, { observe: 'response' }).toPromise()
-     });
-   }
- 
-   Promise.all(uploadPromises.map(up => up.promise)).then((results: any[]) => {
-     let errorMessages: string[] = [];
-     
-     results.forEach((res, index) => {
-       const currentType = uploadPromises[index].type;
-       
-       if (res.status === 409) {
-         const typeName = currentType === '2d' ? 'imágenes' : 'modelos 3D';
-         errorMessages.push(`${typeName}: ${res.error.duplicates.join(', ')}`);
-       }
-       else if (!res.body?.success) {
-         errorMessages.push(res.body?.message || `Error en subida de ${currentType === '2d' ? 'imágenes' : '3D'}`);
-       }
-       else {
-         const newFiles = res.body.files.map((filename: string) => ({ direccion: filename }));
-         currentType === '2d' 
-           ? this.especimen.imagenes.push(...newFiles)
-           : this.especimen.imagenes3d.push(...newFiles);
-       }
-     });
- 
-     if (errorMessages.length > 0) {
-       Swal.fire({
-         icon: 'error',
-         title: 'Problemas en subida',
-         html: `Errores:<br>${errorMessages.join('<br>')}`
-       });
-     } else {
-       this.guardarDatos();
-       Swal.fire('Éxito', 'Todos los archivos subidos correctamente', 'success');
-     }
-   }).catch(error => {
-     Swal.fire('Error', 'Error en el proceso de subida', 'error');
-   });
- }
+  if (!this.selectedFiles.length && !this.selectedFiles3d.length) {
+    Swal.fire('Error', 'Seleccione al menos un archivo (imagen o 3D)', 'error');
+    return;
+  }
+
+  const uploadPromises: { type: '2d' | '3d', promise: Promise<any> }[] = [];
+  
+  if (this.selectedFiles.length > 0) {
+    const formData = new FormData();
+    this.selectedFiles.forEach(file => formData.append('file', file));
+    
+    uploadPromises.push({
+      type: '2d',
+      promise: this.http.post(`${baserUrl}/upload`, formData, { observe: 'response' }).toPromise()
+    });
+  }
+  
+  if (this.selectedFiles3d.length > 0) {
+    const formData3d = new FormData();
+    this.selectedFiles3d.forEach(file => formData3d.append('file', file));
+    
+    uploadPromises.push({
+      type: '3d',
+      promise: this.http.post(`${baserUrl}/upload3d`, formData3d, { observe: 'response' }).toPromise()
+    });
+  }
+  
+  Promise.all(uploadPromises.map(up => up.promise)).then((results: any[]) => {
+    let errorMessages: string[] = [];
+    
+    results.forEach((res, index) => {
+      const currentType = uploadPromises[index].type;
+      
+      if (res.status === 409) {
+        const typeName = currentType === '2d' ? 'imágenes' : 'modelos 3D';
+        errorMessages.push(`${typeName}: ${res.error.duplicates.join(', ')}`);
+      } else if (!res.body?.success) {
+        errorMessages.push(res.body?.message || `Error en subida de ${currentType === '2d' ? 'imágenes' : '3D'}`);
+      } else {
+        // Se asume que el backend devuelve un arreglo de nombres de archivo
+        const newFiles = res.body.files.map((filename: string) => ({ direccion: filename }));
+        if (currentType === '2d') {
+          if(!this.especimen.imagenes) {
+            this.especimen.imagenes = [];
+          }
+          this.especimen.imagenes.push(...newFiles);
+        } else {
+          if(!this.especimen.imagenes3d) {
+            this.especimen.imagenes3d = [];
+          }
+          this.especimen.imagenes3d.push(...newFiles);
+        }
+      }
+    });
+    
+    if (errorMessages.length > 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Problemas en subida',
+        html: `Errores:<br>${errorMessages.join('<br>')}`
+      });
+    } else {
+      // Una vez subidos los archivos, se envían los datos del espécimen
+      this.guardarDatos();
+      Swal.fire('Éxito', 'Todos los archivos subidos correctamente', 'success');
+    }
+  }).catch(error => {
+    Swal.fire('Error', 'Error en el proceso de subida', 'error');
+  });
+}
+
    handleImageError(event: Event): void {
      const imgElement = event.target as HTMLImageElement;
      imgElement.src = 'placeholder.png'; // Imagen por defecto

@@ -58,4 +58,38 @@ export class ListarUsuariosComponent implements OnInit {
     })
   }
 
+
+
+  cambiarEstadoUsuario(usuario: any) {
+    const nuevoEstado = !usuario.enabled;
+    const mensajeAccion = nuevoEstado ? 'desbloquear' : 'bloquear';
+  
+    Swal.fire({
+      title: `${mensajeAccion.charAt(0).toUpperCase() + mensajeAccion.slice(1)} usuario`,
+      text: `¿Estás seguro de que deseas ${mensajeAccion} al usuario ${usuario.username}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: mensajeAccion.charAt(0).toUpperCase() + mensajeAccion.slice(1),
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.actualizarEstadoUsuario(usuario.id, nuevoEstado).subscribe(
+          () => {
+            usuario.enabled = nuevoEstado;
+            Swal.fire(
+              `Usuario ${mensajeAccion === 'bloquear' ? 'bloqueado' : 'desbloqueado'}`,
+              `El usuario ${usuario.username} ha sido ${mensajeAccion} correctamente.`,
+              'success'
+            );
+          },
+          (error) => {
+            Swal.fire('Error', `No se pudo ${mensajeAccion} el usuario.`, 'error');
+          }
+        );
+      }
+    });
+  }
+  
 }

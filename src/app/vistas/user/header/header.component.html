@@ -1,0 +1,43 @@
+<header class="header">
+    <div class="logo">
+      <img src="logo.ico" alt="Logo" />
+    </div>
+    <ul class="nav-titulo" >
+        <li><a href="/user-dashboard" >Sendero Ecologico</a></li>
+    </ul>
+    <!-- Lista de navegación; se muestra u oculta según isMenuOpen -->
+  <ul class="nav-links" [class.active]="isMenuOpen">
+  <li style="position: relative;">
+    <a #toggleEstacionesRef  (click)="toggleEstaciones()">Estaciones</a>
+    <ul *ngIf="mostrarEstaciones" class="dropdown-menu">
+      <li *ngFor="let e of estaciones">
+        <a [routerLink]="'/estacion/' + e.numero" (click)="toggleMenu()">
+          Estación {{ e.numero }} - {{ e.nombre }}
+        </a>
+      </li>
+    </ul>
+  </li>
+
+      
+     
+  <li><a routerLink="/actividad" >Mapa</a></li>
+      <li><a routerLink="/actividad" >Actividades</a></li>
+      <li><a *ngIf="isLoggedIn && user">
+        {{ user.username }}
+      </a></li>
+      <li> <a *ngIf="!isLoggedIn" routerLink="" class="nav-link">
+        Iniciar sesión
+      </a></li>
+      <li><a *ngIf="isLoggedIn" (click)="logout()" class="nav-link">
+        Cerrar sesión
+      </a></li>
+    </ul>
+    <!-- Overlay para cerrar el menú al hacer clic fuera -->
+    <div class="overlay" [class.active]="isMenuOpen" (click)="toggleMenu()"></div>
+    <!-- Botón de menú hamburguesa -->
+    <div class="menu-toggle" [class.active]="isMenuOpen" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>

@@ -1,5 +1,8 @@
 <app-header></app-header>
 <body>
+  <div>
+    <button mat-flat-button color="primary" class="ml20" [routerLink]="['/crear-especimen']">Crear Especimen</button>
+  </div>
 <div class="cards-grid">
   <div class="card" *ngFor="let e of especimenes">
     <!-- Contenedor de contenido scrollable -->

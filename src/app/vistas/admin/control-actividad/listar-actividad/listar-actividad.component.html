@@ -1,0 +1,35 @@
+<app-header></app-header>
+<body>
+  <div class="container text-center mt20">
+    <button class="btn" routerLink="/crear-actividad">
+      Agregar actividad
+    </button>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card" *ngFor="let a of actividades">
+      <div class="card-body">
+        <h3 class="card-text">ID: {{ a.id }}</h3>
+        <h4 class="card-title">Titulo: {{ a.titulo }}</h4>
+        <h4 class="card-title">Fecha: {{ a.fecha | date:'fullDate' }}</h4>
+        <h4 class="card-title">Hora: {{ a.fecha | date:'hh:mm a' }}</h4>
+       <div *ngIf="a.estacion">
+        <p>Estacion: {{a.estacion.nombre }}</p>
+      </div>
+    
+
+        <div class="usuarios" *ngIf="a.usuarios && a.usuarios.length > 0">  <p>Usuarios:</p>
+            <ul>
+              <li *ngFor="let usuario of a.usuarios">{{ usuario.username }}</li>
+            </ul>
+          </div>
+        <div class="card-actions">
+          <button class="btn"  (click)="eliminarActividad(a.id)">Eliminar</button>
+          <button [routerLink]="'/editar-actividad/' + a.id" mat-flat-button color="primary" class="ml20">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>

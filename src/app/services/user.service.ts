@@ -16,7 +16,7 @@ export class UserService {
 
 
     public listarUsuarios(){
-      return this.httpClient.get(`${baserUrl}/usuario/`);
+      return this.httpClient.get(`${baserUrl}/usuarios/`);
     }
 
     public eliminarUsuario(id:any){
@@ -30,5 +30,10 @@ export class UserService {
     public guardarUsuariox(username:any){
       return this.httpClient.put(`${baserUrl}/usuario/`,username);
     }
+
+    actualizarEstadoUsuario(id: number, enabled: boolean) {
+      return this.httpClient.put(`${baserUrl}/usuarios/${id}/estado`, { enabled });
+    }
+    
 
 }
