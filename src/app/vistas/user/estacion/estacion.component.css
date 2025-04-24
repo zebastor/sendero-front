@@ -1,8 +1,102 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: white;
+  color: #f5f5f5;
+  margin: 0;
+  padding: 1rem;
+  margin-top: 150px;
+  line-height: 1.6;
+}
+
+/* Card Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Card */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #333;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-body h3,
+.card-body h4 {
+  color: #20664b;
+  margin-bottom: 0.5rem;
+}
+
+.card-body p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-body strong {
+  color: #34acdc;
+}
+
+ul {
+  list-style: disc inside;
+  margin: 0.5rem 0 1rem;
+  padding-left: 1rem;
+}
+
+li {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* Imagenes */
+.imagenes {
+  margin-top: 1rem;
+}
+
+.specimen-image {
+  display: block;
+  margin: 0.5rem 0;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Model Viewer 3D */
+model-viewer.specimen-image {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  margin-top: 0.75rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
-  
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .specimen-image {
+    width: 100% !important;
+    height: auto !important;
+  }
+}

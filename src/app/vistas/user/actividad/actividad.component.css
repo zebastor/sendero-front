@@ -1,3 +1,14 @@
+:root {
+  --verde-fondo: #20664b;
+  --verde-claro: #2c8e63;
+  --verde-principal: #34ac8c;
+  --verde-principal-hover: #2a8c72;
+  --blanco: #ffffff;
+  --gris-texto: #eeeeee;
+  --gris-claro: #f0f0f0;
+  --gris-oscuro: #444444;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;

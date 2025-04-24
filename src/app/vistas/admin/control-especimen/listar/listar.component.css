@@ -1,100 +1,175 @@
-.preview-image {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin: 5px 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
+/* 1. Reset y tipografía base */
+* {
+  box-sizing: border-box;
   margin: 0;
-  padding: 1rem;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: fff;
   color: #333;
-  margin-top: 150px;
+  padding: 8rem 1rem 2rem; /* espacio para header */
 }
 
-/* Grid de tarjetas responsive */
+/* 2. Botón “Crear Especimen” */
+.container > button,
+.ml20 {
+  display: inline-block;
+  margin: 0 auto 2rem;
+  background-color: #40916c;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+ 
+}
+.container > button:hover,
+.ml20:hover {
+  background-color: #31724a;
+  transform: translateY(-1px);
+}
+
+/* 3. Grid de tarjetas */
 .cards-grid {
   display: grid;
-  /* Se reduce el tamaño mínimo de la columna para dispositivos pequeños */
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
+/* 4. Tarjeta: grid con contenido scrollable + acciones fijas */
 .card {
-  display: flex;
-  flex-direction: column;
-  min-height: 20vh; /* Altura mínima de la tarjeta */
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: auto; /* Usa auto para que solo aparezca el scroll cuando sea necesario */
-  max-height: 80vh;
-  background: #fff;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
 }
-
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 }
 
-.card h3 {
-  margin-top: 0;
+/* 5. Contenido scrollable */
+.card-content {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+.card-text {
+  font-size: 0.9rem;
+  color: #555;
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
 }
-
-.card p {
-  margin-bottom: 1rem;
+.card-title {
+  font-size: 1.2rem;
+  color: #2d6a4f;
+  margin-bottom: 0.75rem;
+}
+.card-description {
   font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
 }
 
-.card a {
-  display: inline-block;
-  text-decoration: none;
-  background: #007bff;
+/* 6. Listas internas */
+.card-content ul {
+  list-style: disc inside;
+  margin-bottom: 1rem;
+}
+.card-content p {
+  font-size: 1rem;
+  color: #344e41;
+  margin-bottom: 0.5rem;
+}
+
+/* 7. Galería de imágenes */
+.imagenes {
+  margin-top: 1rem;
+}
+.imagenes p {
+  font-weight: 600;
+  color: #2d6a4f;
+  margin-bottom: 0.5rem;
+}
+.imagenes ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 0.5rem;
+  padding: 0;
+}
+.imagenes li {
+  display: flex;
+  justify-content: center;
+}
+.specimen-image,
+.preview-image,
+model-viewer {
+  width: 100%;
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* 8. Área de acciones */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+}
+.card-actions .btn {
+  background-color: #e74c3c;
   color: #fff;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background 0.2s ease;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.card-actions .btn:hover {
+  background-color: #c0392b;
+}
+.card-actions [mat-flat-button] {
+  background-color: #40916c;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
+}
+.card-actions [mat-flat-button]:hover {
+  background-color: #31724a;
+  transform: translateY(-1px);
 }
 
-.card a:hover {
-  background: #0056b3;
-}
-
-.imagenes li {
-  list-style: none;
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.card-actions {
-  background-color: #f5f5f5; /* Color de fondo del área de acciones */
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.card-content {
-  flex: 1; /* Ocupa el espacio vertical disponible */
-  padding: 10px;
-  overflow-y: auto; /* Habilita scroll vertical cuando el contenido excede el contenedor */
-  box-sizing: border-box;
-}
-
-/* Media query para dispositivos móviles */
+/* 9. Responsive */
 @media (max-width: 600px) {
-  .cards-grid {
-    grid-template-columns: 1fr; /* Una sola columna en dispositivos pequeños */
-    padding: 0.5rem;
-  }
   body {
-    margin-top: 100px;
-    padding: 0.5rem;
+    padding: 6rem 0.5rem 1rem;
   }
-  .card {
-    max-height: none; /* Permite que la tarjeta se adapte a la altura de su contenido */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .card-content {
+    padding: 1rem;
+  }
+  .specimen-image,
+  model-viewer {
+    max-width: 60px;
+    max-height: 60px;
+  }
+  .card-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
   }
 }
-.boody {margin-top: 300px;}

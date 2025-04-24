@@ -1,8 +1,100 @@
+/* 1. Fuente general */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
-  }
+  font-family: 'Poppins', sans-serif;
+  background-color: #20664b; /* Verde oscuro ecológico */
+  margin: 0;
+  padding: 1rem;
+  margin-top: 120px;
+  color: #212529;
+  height: 100vh;
+}
+
+/* 2. Card contenedora */
+.card.update-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  max-width: 600px;
+  margin: 0 auto;
   
+}
+
+/* 3. Título */
+.card.update-card h1 {
+  text-align: center;
+  color: #2d6a4f;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* 4. Grupos del formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* 5. Etiquetas */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #1b4332;
+  font-size: 15px;
+}
+
+/* 6. Inputs y selects */
+.input-field,
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #a3cbbf;
+  border-radius: 10px;
+  background-color: #f7fdfb;
+  transition: all 0.3s ease;
+}
+
+.input-field:focus,
+select:focus {
+  border-color: #52b788;
+  background-color: #ffffff;
+  outline: none;
+}
+
+/* 7. Botón */
+.btn {
+  background-color: #2d6a4f;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #1b4332;
+}
+
+/* 8. Centrado del botón */
+.text-center {
+  text-align: center;
+}
+
+/* 9. Responsive */
+@media (max-width: 768px) {
+  .card.update-card {
+    padding: 20px;
+  }
+
+  .card.update-card h1 {
+    font-size: 24px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

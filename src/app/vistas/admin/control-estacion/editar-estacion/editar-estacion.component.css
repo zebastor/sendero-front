@@ -1,8 +1,123 @@
+/* 1. Fuente y fondo general */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
+  font-family: 'Poppins', sans-serif;
+  background:#20664b;
+  color: #333;
+  margin: 0;
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. Tarjeta principal */
+.card.update-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+/* 3. Título */
+.card.update-card h1 {
+  margin: 0 0 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1b4332;
+  text-align: center;
+}
+
+/* 4. Formulario con CSS Grid */
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* 5. Form-group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* 6. Labels */
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2d6a4f;
+  font-size: 1rem;
+}
+
+/* 7. Inputs y selects */
+.input-field,
+select {
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  border: 1px solid #b9dfcc;
+  border-radius: 8px;
+  background-color: #fcfffc;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* placeholder disabled option */
+select option[disabled] {
+  color: #999;
+}
+
+/* 8. Estados de foco */
+.input-field:focus,
+select:focus {
+  border-color: #52b788;
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.2);
+  outline: none;
+}
+
+/* 9. Botón Guardar */
+.btn {
+  background-color: #40916c;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  justify-self: center;
+}
+
+/* Hover y Active del botón */
+.btn:hover {
+  background-color: #31724a;
+  transform: translateY(-1px);
+}
+.btn:active {
+  background-color: #2d6a4f;
+  transform: translateY(0);
+}
+
+/* 10. Contenedor centrado para el botón */
+.text-center {
+  text-align: center;
+}
+
+/* 11. Responsive */
+@media (max-width: 600px) {
+  .card.update-card {
+    padding: 1.5rem;
   }
-  
+  .card.update-card h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  .btn {
+    width: 100%;
+  }
+}

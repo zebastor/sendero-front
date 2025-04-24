@@ -1,8 +1,131 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #e9f5f1;
+  margin: 0;
+  padding: 2rem;
+  margin-top: 150px;
+  color: #1b4332;
+}
+
+/* Contenedor centrado para botón de agregar */
+.container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  background-color: #2d6a4f;
+  color: #ffffff;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #1b4332;
+}
+
+/* Estilo del grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Tarjeta de estación */
+.card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Cuerpo de la tarjeta */
+.card-body {
+  text-align: left;
+}
+
+.card h3,
+.card h4 {
+  margin: 0.4rem 0;
+  font-weight: 600;
+}
+
+.card h3 {
+  color: #2d6a4f;
+  font-size: 1.1rem;
+}
+
+.card h4 {
+  color: #344e41;
+  font-size: 1rem;
+}
+
+/* Especímenes */
+.especimenes {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.especimenes ul {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.especimenes li {
+  margin-bottom: 0.3rem;
+}
+
+/* Acciones */
+.card-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.card-actions .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+}
+
+/* Botón de actualizar (usando mat-flat-button como base) */
+.card-actions [mat-flat-button] {
+  background-color: #52b788;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.card-actions [mat-flat-button]:hover {
+  background-color: #40916c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
   }
-  
+
+  .card-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

@@ -1,8 +1,120 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
-  }
+  font-family: 'Poppins', sans-serif;
+  background-color: #20664b;
+  margin: 0;
+  padding: 0;
+  color: #212529;
+  min-height: 100vh; /* mínimo 100% de viewport */
+  display: flex;     /* flex container */
+  align-items: center; /* centra vertical */
+  justify-content: center; /* centra horizontal */
+}
+
+/* 2. Card principal mejorada */
+.card.update-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 2rem; /* algo más de padding */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
   
+  max-width: 500px; /* ancho máximo */
+  width: 90%;       /* ocupa hasta 90% del viewport */
+  
+  min-height: 400px; /* altura mínima razonable */
+  box-sizing: border-box; /* incluye padding en el cálculo de ancho/alto */
+
+  display: grid; /* usa grid en lugar de flex */
+  grid-template-columns: 1fr; /* una columna */
+  gap: 1.5rem; /* separación entre filas de formulario */
+  justify-items: center; /* centra los elementos horizontalmente */
+  margin-top: 100px; /* margen superior */
+}
+
+/* 3. Título con margen reducido encima y espacio debajo */
+.card.update-card h1 {
+  margin: 0 0 1.5rem;
+  font-size: 2rem;
+  color: #1b4332;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* 4. Más espacio entre cada grupo de campo */
+.form-group {
+  width: 100%; /* ocupa el 100% del ancho */
+}
+
+/* 5. Labels claros, con espacio */
+.form-group label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  color: #2d6a4f;
+  font-size: 1rem;
+}
+
+/* 6. Inputs y selects más altos y con padding aumentado */
+.input-field,
+select {
+  width: 100%;
+  padding: 1rem 1.2rem; /* antes 0.75rem */
+  font-size: 1rem;
+  border: 1px solid #b9dfcc;
+  border-radius: 8px;
+  background-color: #fcfffc;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+/* 7. Feedback en foco */
+.input-field:focus,
+select:focus {
+  border-color: #52b788;
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.2);
+  outline: none;
+}
+
+/* 8. Botón principal con mayor padding */
+.btn {
+  background-color: #40916c;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2.2rem; /* antes 0.65 / 1.8rem */
+  font-size: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* 9. Hover/active del botón */
+.btn:hover {
+  background-color: #31724a;
+  transform: translateY(-1px);
+}
+.btn:active {
+  background-color: #2d6a4f;
+  transform: translateY(0);
+}
+
+/* 10. Centrado del botón guardado */
+.text-center {
+  text-align: center;
+}
+
+/* 11. Responsive: campos y padding ajustados */
+@media (max-width: 768px) {
+  .card.update-card {
+    padding: 1.5rem 1.5rem;
+  }
+  .card.update-card h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .input-field,
+  select {
+    padding: 0.9rem 1rem;
+  }
+  .btn {
+    width: 100%;
+  }
+}

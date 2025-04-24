@@ -1,8 +1,118 @@
+/* 1. Base y centrado de la tarjeta */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #20664b;
+  color: #333;
+  margin: 0;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 2. Tarjeta como Grid Container */
+.card.update-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1.5rem;
+  justify-items: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* 3. Título */
+.card.update-card h1 {
+  grid-column: 1 / -1;
+  font-size: 2rem;
+  color: #2d6a4f;
+  text-align: center;
+  margin: 0;
+}
+
+/* 4. Forzar que .row no añada estilos no deseados */
+.row {
+  width: 100%;
+}
+
+/* 5. Centralizar columna interna */
+.col-md-8.offset-md-2 {
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 6. Formulario en Grid */
+.card.update-card form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  justify-items: center;
+}
+
+/* 7. Grupos de campo */
+.form-group {
+  display: grid;
+  grid-template-rows: auto auto;
+  width: 100%;
+  gap: 0.5rem;
+}
+.form-group label {
+  font-weight: 600;
+  color: #2d6a4f;
+}
+
+/* 8. Inputs */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #b9dfcc;
+  border-radius: 8px;
+  background-color: #fcfffc;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.input-field:focus {
+  outline: none;
+  border-color: #52b788;
+  box-shadow: 0 0 0 3px rgba(82,183,136,0.2);
+}
+
+/* 9. Botón centrado con Flex */
+.text-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.text-center .btn {
+  background-color: #40916c;
+  color: #fff;
+  padding: 0.75rem 1.6rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.text-center .btn:hover {
+  background-color: #31724a;
+  transform: translateY(-1px);
+}
+
+/* 10. Resposive */
+@media (max-width: 600px) {
+  body {
     padding: 1rem;
-    color: #333;
-    margin-top: 150px;
   }
-  
+  .card.update-card {
+    padding: 1.5rem;
+  }
+  .text-center .btn {
+    width: 100%;
+  }
+}
