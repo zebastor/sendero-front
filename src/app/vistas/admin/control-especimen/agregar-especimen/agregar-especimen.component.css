@@ -1,8 +1,124 @@
+/* 1. Fuente y fondo */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #20664b;
+  margin: 0;
+  padding: 8rem 1rem; /* Ajuste para tener padding lateral en pantallas pequeñas */
+  color: #333;
+  margin-top: 100px;
+  box-sizing: border-box;
+}
+
+/* 2. Estilo de la tarjeta */
+.card.update-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+/* 3. Título de la tarjeta */
+.card.update-card h1 {
+  font-size: 2rem;
+  color: #2d6a4f;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* 4. Formulario con Grid */
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* 5. Grupos de campo */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 6. Etiquetas */
+.form-group label {
+  font-weight: 600;
+  color: #2d6a4f;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 7. Campos de entrada y select */
+.input-field,
+select {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  border: 1px solid #b9dfcc;
+  border-radius: 8px;
+  background-color: #fcfffc;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+/* 8. Feedback en foco */
+.input-field:focus,
+select:focus {
+  border-color: #52b788;
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.2);
+  outline: none;
+}
+
+/* 9. Botón "Guardar" */
+.btn {
+  background-color: #2d6a4f;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 1.5rem;
+}
+
+.btn:hover {
+  background-color: #1b4332;
+  transform: translateY(-1px);
+}
+
+/* 10. Botón "Guardar" centrado */
+.text-center {
+  text-align: center;
+}
+
+/* 11. Responsive: ajusta los campos y el padding */
+@media (max-width: 768px) {
+  body {
+    padding: 4rem 1rem; /* Ajusta el padding en pantallas más pequeñas */
   }
-  
+
+  .card.update-card {
+    padding: 1.5rem; /* Reduce el padding de la tarjeta en pantallas pequeñas */
+  }
+
+  .card.update-card h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .input-field,
+  select {
+    padding: 0.9rem 1rem;
+    font-size: 0.95rem; /* Ajuste para pantallas pequeñas */
+  }
+
+  .btn {
+    width: 100%; /* Hace el botón de "Guardar" más ancho en pantallas pequeñas */
+  }
+}

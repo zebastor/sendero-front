@@ -1,8 +1,118 @@
+:root {
+  --verde-principal: #00873f;
+  --verde-claro: #e5f5e5;
+  --texto-verde: #005824;
+  --bg-page: #f9f9f9;
+  --radio: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
-  }
-  
+  background: var(--bg-page);
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--texto-verde);
+}
+
+/* --- filtros --- */
+.filters.container {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.filter {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--verde-claro);
+  border-radius: var(--radio);
+  background: white;
+  color: var(--texto-verde);
+}
+.user-btn {
+  background: var(--verde-principal);
+  border: none;
+  padding: 0.5rem;
+  border-radius: var(--radio);
+  color: white;
+  cursor: pointer;
+}
+
+/* --- lista de actividades --- */
+.actividades {
+  padding: 0 1rem 2rem;
+}
+.actividades h2 {
+  font-size: 1.75rem;
+  margin-top: 0;
+}
+
+/* grid responsivo */
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 1rem;
+}
+
+/* tarjeta */
+.card {
+  display: flex;
+  background: white;
+  border: 1px solid var(--verde-claro);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* fecha */
+.card-date {
+  background: var(--verde-claro);
+  padding: 0.75rem;
+  text-align: center;
+  min-width: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+}
+.card-date .day {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.card-date .month,
+.card-date .year {
+  font-size: 0.75rem;
+}
+
+/* contenido */
+.card-content {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.card-content .title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.card-content .category {
+  margin: 0.25rem 0 1rem;
+  font-size: 0.9rem;
+  color: var(--texto-verde);
+}
+
+.btn-inscribirse {
+  align-self: flex-end;
+  background: var(--verde-principal);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radio);
+  cursor: pointer;
+}
+.btn-inscribirse:hover {
+  background: #006b31;
+}

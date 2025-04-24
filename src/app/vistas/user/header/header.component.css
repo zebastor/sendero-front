@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #00873f;
     padding: 2px; /* Padding inicial más grande */
     position: absolute;
     top: 0;
@@ -34,7 +34,7 @@
   
 
 .header li a{
-  color: #6b4b40;
+  color: white;
   text-decoration: none;
   font-size: 35px;
   font-weight: 600;
@@ -54,8 +54,8 @@
   }
   
   .logo img {
-    width: 80px;  /* Ancho personalizado */
-    height: 80px;  /* Alto personalizado */
+    width: 100px;  /* Ancho personalizado */
+    height: 100px;  /* Alto personalizado */
     object-fit: contain;
     margin: 20px; /* Para asegurar que la imagen se ajuste sin distorsionarse */
   }
@@ -160,11 +160,11 @@
     margin-top: 0;
     display: flex;
     flex-direction: column;
-    background-color: #6e3939c4; /* Fondo blanco para el menú */
+    background-color: #5e8c6a; /* Fondo blanco para el menú */
     position: fixed;
     top: 0; /* Desde el borde superior */
     right: 0; /* Pegado al borde derecho */
-    height: 100%; /* Ocupar toda la altura de la pantalla */
+    height: 50%; /* Ocupar toda la altura de la pantalla */
     width: 70%; /* Solo ocupar el 50% del ancho de la pantalla */
     padding: 20px;
     box-sizing: border-box;
