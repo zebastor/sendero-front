@@ -59,9 +59,64 @@ body {
   transition: background-color 0.3s ease, transform 0.2s;
 }
 
+<<<<<<< HEAD
 .container2 button:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
+=======
+
+.dropdown-menu li a {
+  font-size: 20px;
+ }
+
+ 
+ 
+  .container2{
+    margin-top: 170px;
+  }
+  
+  .logo img {
+    width: 80px;  /* Ancho personalizado */
+    height: 80px;  /* Alto personalizado */
+    object-fit: contain;
+    margin: 20px; /* Para asegurar que la imagen se ajuste sin distorsionarse */
+  }
+  
+  .nav-titulo{
+    list-style: none;
+  
+    margin-left: 20px;
+    padding: 0;
+    margin-right: auto;
+  }
+
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  
+  
+  }
+  
+    /* Alineación a la derecha en modo escritorio */
+    @media (min-width: 769px) {
+      .dropdown-menu {
+        width: 40vh; /* Ajusta el ancho al contenido */
+        position: absolute;           /* Se posiciona relativamente al <li> padre */
+        top: 100%;                    /* Se sitúa justo debajo del enlace "Estaciones" */
+        left: 0;
+        background-color: #fff;       /* Fondo blanco para la tarjeta */
+        border: 1px solid #ccc;       /* Borde para delimitar la tarjeta */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para darle efecto de superposición */
+        padding: 10px;
+        margin: 0;
+        list-style: none;             /* Sin viñetas */
+        z-index: 1300;                /* Asegura que se muestre encima de otros elementos */
+      }
+>>>>>>> c66502f600e85f67ae31a94d8676b027f0731f6f
 }
 
 /* Mapa */
