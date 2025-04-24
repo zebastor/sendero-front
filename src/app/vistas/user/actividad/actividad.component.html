@@ -1,19 +1,40 @@
 <app-header></app-header>
-<body>
+<div class="main-container">
+  <h2 class="section-title">Actividades</h2>
+
+  <!-- Filtros (Fecha, Estación) -->
+  <div class="filters">
+    <select>
+      <option>Hoy</option>
+      <option>Mañana</option>
+    </select>
+    <select>
+      <option>Valor</option>
+      <option>Nombre</option>
+    </select>
+    <button class="filter-btn">🔍</button>
+  </div>
+
+  <!-- Lista de actividades -->
   <div class="cards-grid">
     <div class="card" *ngFor="let a of actividadesDisponibles">
-      <div class="card-body">
-        <h3 class="card-text">ID: {{ a.id }}</h3>
-        <h4 class="card-title">Titulo: {{ a.titulo }}</h4>
-        <h4 class="card-title">Fecha: {{ a.fecha | date:'fullDate' }}</h4>
-        <h4 class="card-title">Hora: {{ a.fecha | date:'hh:mm a' }}</h4>
-        
-        <div *ngIf="a.estacion">
-          <p>Estación: {{ a.estacion.nombre }}</p>
+      <div class="card-header">
+        <div class="card-date">
+          <div class="icon">📅</div>
+          <div class="day">{{ a.fecha | date:'dd' }}</div>
+          <div class="month">{{ a.fecha | date:'MMMM yyyy' }}</div>
         </div>
+        <div class="card-time">
+          <span class="icon">⏰</span>
+          <span>{{ a.fecha | date:'hh:mm a' }}</span>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <h3 class="card-title">{{ a.titulo }}</h3>
+        <p *ngIf="a.estacion">Estación: {{ a.estacion.nombre }}</p>
 
         <div class="card-actions">
-          <!-- Se muestra "Cancelar" si el usuario ya está inscrito, de lo contrario "Inscribirme" -->
           <button class="btn" (click)="(isUsuarioInscrito(a) ? cancelarUsuarioActividad(a.id) : agregarUsuarioActividad(a.id))">
             {{ isUsuarioInscrito(a) ? 'Cancelar' : 'Inscribirme' }}
           </button>
@@ -21,6 +42,4 @@
       </div>
     </div>
   </div>
-
-  
-</body>
+</div>

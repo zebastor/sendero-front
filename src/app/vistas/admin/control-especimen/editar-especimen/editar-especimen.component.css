@@ -1,84 +1,160 @@
-.container { padding: 20px; }
-    .success { color: green; }
-    p { margin: 10px 0; }
+/* 1. Reset y tipografía base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 1rem;
-          margin-top: 150px;
-        color: #333;
-        margin-top: 150px;
-      }
-    .card.update-card {
-        max-width: 600px;
-        margin: 2rem auto;
-        padding: 1.5rem;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      }
-      .card.update-card h1 {
-        text-align: center;
-        margin-bottom: 1.5rem;
-        font-size: 2rem;
-        color: #333;
-      }
-      .form-group {
-        margin-bottom: 1rem;
-      }
-      .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
-        color: #555;
-      }
-      .input-field {
-        width: 100%;
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 1rem;
-      }
-      .input-field:focus {
-        outline: none;
-        border-color: #007bff;
-      }
-      .btn {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        padding: 0.7rem 1.2rem;
-        font-size: 1rem;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-      .btn:hover {
-        background-color: #0056b3;
-      }
-      .text-center {
-        text-align: center;
-      }
-      /* Opcional: estilos de grid para layout responsive */
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-      }
-      .col-md-8 {
-        flex: 0 0 66.666667%;
-        max-width: 66.666667%;
-        padding-right: 15px;
-        padding-left: 15px;
-      }
-      .offset-md-2 {
-        margin-left: 16.666667%;
-      }
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #20664b;
+  color: #333;
+  padding: 10rem 1rem 2rem;
+}
 
-      .imagenes li {
-        list-style: none;
-        display: inline-block;
-        margin-right: 10px;
-      }
+/* 2. Tarjeta centrada */
+.card.update-card {
+  display: grid;
+  grid-template-columns: 1fr;        /* Una sola columna */
+  gap: 1.5rem;                       /* Espacio entre elementos */
+  justify-items: center;             /* Centra los elementos dentro de la tarjeta */
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* 3. Título */
+.card.update-card h1 {
+  grid-column: 1 / -1;               /* Ocupa toda la fila */
+  text-align: center;
+  font-size: 2rem;
+  color: #2d6a4f;
+  font-weight: 700;
+  margin: 0;
+  width: 50vh;
+}
+
+/* 4. Formulario */
+.card.update-card form {
+  display: grid;
+  grid-template-columns: 1fr;        /* Una sola columna */
+  gap: 1.5rem;                       /* Espacio entre campos */
+  width: 100%;                        /* Para que ocupe todo el ancho */
+  justify-items: center;      
+  width: 50vh;       /* Centra los inputs */
+}
+
+/* 5. Cada grupo de campo */
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr;        /* Una sola columna */
+  width: 100%;
+}
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2d6a4f;
+}
+
+/* 6. Campos de entrada */
+.input-field,
+select,
+input[type="file"] {
+  width: 100%;                       /* Ocupa todo el ancho disponible */
+  padding: 0.9rem;
+  border: 1px solid #b9dfcc;
+  border-radius: 8px;
+  background-color: #fcfffc;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.input-field:focus,
+select:focus,
+input[type="file"]:focus {
+  outline: none;
+  border-color: #52b788;
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.2);
+}
+
+/* 7. Galería de imágenes y modelos 3D */
+.imagenes {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+.imagenes p {
+  grid-column: 1 / -1;               /* Ocupa toda la fila */
+  font-weight: 600;
+  color: #2d6a4f;
+  margin: 0 0 0.5rem;
+}
+.imagenes li {
+  list-style: none;
+  display: grid;
+  grid-template-rows: auto auto;     /* Imagen/modelo + botón */
+  gap: 0.5rem;
+}
+.specimen-image,
+model-viewer {
+  width: 100%;
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* 8. Botones */
+.btn {
+  background-color: #40916c;
+  color: #fff;
+  padding: 0.75rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.btn:hover {
+  background-color: #31724a;
+  transform: translateY(-1px);
+}
+/* Botones de eliminar en galería */
+.imagenes .btn {
+  background-color: #e74c3c;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+.imagenes .btn:hover {
+  background-color: #c0392b;
+}
+
+/* 9. Contenedor de botones finales */
+.text-center {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  justify-items: center;
+  margin-top: 1rem;
+}
+
+/* 10. Ajustes Responsive */
+@media (max-width: 600px) {
+  body {
+    padding: 3rem 1rem 1rem;
+  }
+  .card.update-card {
+    padding: 1.5rem;
+  }
+  .specimen-image,
+  model-viewer {
+    max-width: 100px;
+    max-height: 100px;
+  }
+}

@@ -5,9 +5,7 @@
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <form *ngIf="actividad" (ngSubmit)="agregarActividad()" enctype="multipart/form-data">
-          
-        
-          
+
           <div class="form-group">
             <label for="titulo">Titulo</label>
             <input id="titulo" [(ngModel)]="actividad.titulo" type="text" name="titulo" placeholder="Digite el titulo" required class="input-field">

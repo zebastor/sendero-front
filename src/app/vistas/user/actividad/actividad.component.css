@@ -1,8 +1,185 @@
+:root {
+  --verde-fondo: #20664b;
+  --verde-claro: #2c8e63;
+  --verde-principal: #34ac8c;
+  --verde-principal-hover: #2a8c72;
+  --blanco: #ffffff;
+  --gris-texto: #eeeeee;
+  --gris-claro: #f0f0f0;
+  --gris-oscuro: #444444;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--verde-fondo); /* Fondo verde para todo el body */
+  color: var(--blanco);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: transparent; /* Eliminar fondo verde aquí */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--blanco);
+  font-weight: 700;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.filters select,
+.filter-btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--blanco);
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.filter-btn:hover,
+.filters select:hover {
+  background-color: var(--gris-claro);
+  transform: translateY(-2px);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--blanco); /* Fondo blanco para las tarjetas */
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Agregar sombra suave para profundidad */
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--verde-claro);
+  padding: 1rem;
+  align-items: center;
+  color: var(--blanco);
+}
+
+.card-date {
+  text-align: center;
+}
+
+.card-date .icon {
+  font-size: 1.8rem;
+}
+
+.card-date .day {
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.card-date .month {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.card-time {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.card-time .icon {
+  font-size: 1.5rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+  color: var(--gris-oscuro);
+}
+
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.card-body p {
+  margin-top: 0.25rem;
+  color: var(--gris-oscuro);
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.btn {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  padding: 0.8rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--verde-principal-hover);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .filters {
+    grid-template-columns: 1fr;
+    align-items: center;
   }
-  
+
+  .filters select,
+  .filter-btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+}

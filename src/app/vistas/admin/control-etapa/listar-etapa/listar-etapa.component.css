@@ -1,8 +1,103 @@
+/* 1. Estilos base y reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+  padding: 1rem;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 2. Contenedor de botón de "Agregar Etapa" */
+.container.text-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.container.text-center .btn {
+  background-color: #40916c;
+  color: #fff;
+  padding: 0.75rem 1.6rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.container.text-center .btn:hover {
+  background-color: #31724a;
+  transform: translateY(-1px);
+}
+
+/* 3. Estilo para la grilla de tarjetas */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive */
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* 4. Estilo para cada tarjeta */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card h3, .card h4 {
+  color: #2d6a4f;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+}
+
+.card h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* 5. Estilo de botones dentro de la tarjeta */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-actions .btn {
+  background-color: #40916c;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.card-actions .btn:hover {
+  background-color: #31724a;
+  transform: translateY(-1px);
+}
+
+/* 6. Responsive design */
+@media (max-width: 600px) {
+  .container.text-center .btn {
+    width: 100%;
   }
-  
+}

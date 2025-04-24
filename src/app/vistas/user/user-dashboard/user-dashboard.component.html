@@ -1,62 +1,51 @@
 <app-header></app-header>
-  
-  <body>
 
+<div class="container2 p-6">
+  <h1 class="text-2xl font-bold">Bienvenido al Sendero Ecológico</h1>
+  <p class="mt-2 mb-4">Explora la naturaleza y disfruta de nuestras actividades al aire libre.</p>
+  <button (click)="toggleMenu()" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">
+    Toggle Menu
+  </button>
+</div>
 
+<div class="map-container p-6">
+  <h2 class="text-xl font-semibold mb-2">Mapa del Sendero</h2>
+  <p>Descubre las estaciones y actividades disponibles.</p>
+</div>
 
-    <div class="container2">
-        <h1>Bienvenido al Sendero Ecológico</h1>
-        <p>Explora la naturaleza y disfruta de nuestras actividades al aire libre.</p>
-        <button (click)="toggleMenu()">Toggle Menu</button>
-    </div>
-    <div class="map-container">
-        <h2>Mapa del Sendero</h2>
-       <!-- <img src="mapa.jpg" alt="Mapa del Sendero" />-->
-        <p>Descubre las estaciones y actividades disponibles.</p>
-    </div>
+<div class="cards-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
+  <div class="card border rounded shadow p-4" *ngFor="let e of estaciones">
+    <div class="card-body">
+      <h3 class="text-lg font-bold">ID: {{ e.id }}</h3>
+      <h4 class="font-semibold">Nombre: {{ e.nombre }}</h4>
+      <p>Número: {{ e.numero }}</p>
+      <p>Latitud: {{ e.latitud }}</p>
+      <p>Longitud: {{ e.longitud }}</p>
+      <p>Elemento Interactivo: {{ e.elementoInteractivo }}</p>
 
+      <div *ngIf="e.especimenes?.length">
+        <h5 class="mt-2 font-bold">Especímenes:</h5>
+        <ul class="list-disc pl-4">
+          <li *ngFor="let especimen of e.especimenes">
+            <strong>Nombre:</strong> {{ especimen.nombre }} <br />
+            <strong>Reino:</strong> {{ especimen.reino?.nombre }}
 
-    <div class="cards-grid">
-      <div class="card" *ngFor="let e of estaciones">
-        <div class="card-body">
-          <h3 class="card-text">ID: {{ e.id }}</h3>
-          <h4 class="card-title">Nombre: {{ e.nombre }}</h4>
-          <p>Número: {{ e.numero }}</p>
-          <p>Latitud: {{ e.latitud }}</p>
-          <p>Longitud: {{ e.longitud }}</p>
-          <p>Elemento Interactivo: {{ e.elementoInteractivo }}</p>
-    
-          <div *ngIf="e.especimenes?.length">
-            <h5>Especímenes:</h5>
-            <ul>
-              <li *ngFor="let especimen of e.especimenes">
-                <strong>Nombre:</strong> {{ especimen.nombre }} <br>
-                <strong>Reino:</strong> {{ especimen.reino?.nombre }}
-    
-                <div *ngIf="especimen.etapas?.length">
-                  <p><strong>Etapas:</strong></p>
-                  <ul>
-                    <li *ngFor="let etapa of especimen.etapas">
-                      {{ etapa.nombre }}
-                    </li>
-                  </ul>
-                </div>
-    
-                <div *ngIf="especimen.imagenes?.length">
-                  <p><strong>Imágenes:</strong></p>
-                  <ul>
-                    <li *ngFor="let img of especimen.imagenes">
-                      {{ img.direccion }}
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+            <div *ngIf="especimen.etapas?.length">
+              <p><strong>Etapas:</strong></p>
+              <ul class="list-disc pl-4">
+                <li *ngFor="let etapa of especimen.etapas">{{ etapa.nombre }}</li>
+              </ul>
+            </div>
+
+            <div *ngIf="especimen.imagenes?.length">
+              <p><strong>Imágenes:</strong></p>
+              <ul class="list-disc pl-4">
+                <li *ngFor="let img of especimen.imagenes">{{ img.direccion }}</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
-    
-
-
-  </body>
+  </div>
+</div>

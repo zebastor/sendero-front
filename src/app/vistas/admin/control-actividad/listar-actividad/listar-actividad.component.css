@@ -1,8 +1,145 @@
+/* 1. Reset y tipografía base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+  padding: 8rem 1rem 2rem;
+  color: #333;
+}
+
+/* 2. Botón "Agregar actividad" centrado */
+.container.text-center.mt20 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.container.text-center.mt20 .btn {
+  background-color: #2d6a4f;
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  justify-items:center;
+}
+.container.text-center.mt20 .btn:hover {
+  background-color: #1b4332;
+  transform: translateY(-2px);
+}
+
+/* 3. Grid responsive para tarjetas */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* 4. Tarjeta */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 5. Contenido de tarjeta */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+  font-weight: 500;
+}
+.card-title {
+  font-size: 1.1rem;
+  color: #2d6a4f;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* 6. Estación y lista de usuarios */
+.card-body > div p {
+  font-size: 0.95rem;
+  color: #344e41;
+}
+.usuarios {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #344e41;
+}
+.usuarios ul {
+  list-style: disc inside;
+  margin-top: 0.5rem;
+}
+.usuarios li {
+  margin-bottom: 0.3rem;
+}
+
+/* 7. Acciones de la tarjeta */
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.card-actions .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.card-actions .btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+}
+
+/* Botón "Actualizar" */
+.card-actions .ml20 {
+  margin-left: 0.5rem;
+  background-color: #52b788;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.card-actions .ml20:hover {
+  background-color: #40916c;
+  transform: translateY(-1px);
+}
+
+/* 8. Responsive para botones */
+@media (max-width: 600px) {
+  .card-actions {
+    justify-content: center;
   }
-  
+  .container.text-center.mt20 .btn,
+  .card-actions .btn,
+  .card-actions .ml20 {
+    width: 100%;
+    text-align: center;
+  }
+}

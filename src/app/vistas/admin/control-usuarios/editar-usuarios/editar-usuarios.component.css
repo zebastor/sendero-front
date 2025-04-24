@@ -1,74 +1,108 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-  
-    color: #333;
-    margin-top: 150px;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  margin-top: 100px;
+  background: #20664b;
+  color: #333;
+  height: 100vh;
+}
+
+/* Contenedor del formulario */
 .card.update-card {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-  .card.update-card h1 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    color: #333;
-  }
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: #555;
-  }
-  .input-field {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  .input-field:focus {
-    outline: none;
-    border-color: #007bff;
-  }
-  .btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 0.7rem 1.2rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .btn:hover {
-    background-color: #0056b3;
-  }
-  .text-center {
-    text-align: center;
-  }
-  /* Opcional: estilos de grid para layout responsive */
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-  .col-md-8 {
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
-    padding-right: 15px;
-    padding-left: 15px;
-  }
-  .offset-md-2 {
-    margin-left: 16.666667%;
-  }
+  max-width: 650px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.card.update-card h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Grupos del formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #444;
+}
+
+/* Campos de entrada */
+.input-field {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fefefe;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+}
+
+/* Botón guardar */
+.btn {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+  transform: scale(1.03);
+}
+
+/* Centrado */
+.text-center {
+  text-align: center;
+}
+
+/* Responsive grid layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-8 {
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.offset-md-2 {
+  margin-left: 16.666667%;
+}
+
+/* Select de roles estilizado */
+select.input-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}

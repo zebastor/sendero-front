@@ -12,10 +12,6 @@ import { HeaderComponent } from '../header/header.component';
   imports: [RouterModule, CommonModule, HeaderComponent],
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.css'],
-  styles: [
-  "node_modules/bootstrap/dist/css/bootstrap.min.css",
-  "src/styles.css"
-]
 })
 export class UserDashboardComponent  implements OnInit {
   isMenuOpen = false;

@@ -1,48 +1,81 @@
+/* Fuente principal */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: #e9f5f1;
   margin: 0;
   padding: 1rem;
-
-  color: #333;
   margin-top: 150px;
+  color: #1b4332;
+  height: 100vh;
 }
-/* Grid de tarjetas responsive */
+
+/* Grid de tarjetas */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 2rem;
 }
+
+/* Tarjeta individual */
 .card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
 }
+
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
+
+/* Título de cada tarjeta */
 .card h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  margin: 0 0 0.75rem 0;
+  color: #2d6a4f;
 }
+
+/* Descripción */
 .card p {
-  margin-bottom: 1rem;
   font-size: 1rem;
+  margin-bottom: 1.2rem;
+  color: #344e41;
 }
+
+/* Botón / Enlace */
 .card a {
   display: inline-block;
+  background-color: #2d6a4f;
+  color: #ffffff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
   text-decoration: none;
-  background: #007bff;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background 0.2s ease;
+  transition: background-color 0.3s ease;
 }
+
 .card a:hover {
-  background: #0056b3;
+  background-color: #1b4332;
+}
+
+/* Responsive padding */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem 1rem;
+    margin-top: 100px;
+  }
+
+  .cards-grid {
+    padding: 0.5rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
 }

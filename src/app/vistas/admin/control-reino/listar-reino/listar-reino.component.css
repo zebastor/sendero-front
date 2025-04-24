@@ -1,8 +1,167 @@
+/* 1. Reset y tipografía base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Body y espacio bajo el header */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    margin-top: 150px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding-top: 10rem;   /* espacio aumentado para el header fijo */
+}
+
+/* 3. Botón "Agregar Reino" */
+.container.text-center.mt20 {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;  /* aumentado desde 1.5rem */
+}
+
+.container.text-center.mt20 .btn {
+  background-color: #40916c;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 5px rgba(64, 145, 108, 0.2);
+}
+
+.container.text-center.mt20 .btn:hover {
+  background-color: #31724a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(64, 145, 108, 0.3);
+}
+
+/* 4. Grid de tarjetas */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;  /* aumentado desde 1rem */
+  max-width: 1200px;
+  margin: 1.5rem auto 3rem;  /* añadido margen superior e incrementado el inferior */
+  padding: 0 1.5rem;  /* aumentado padding lateral */
+}
+
+/* 5. Tarjeta: grid con header, body y footer */
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* 6. Contenido de la tarjeta */
+.card-body {
+  padding: 1.25rem;  /* aumentado desde 1rem */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;  /* aumentado desde 0.5rem */
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;  /* añadido line-height */
+  margin-bottom: 0.25rem;  /* añadido pequeño margen */
+}
+
+.card-title {
+  font-size: 1.2rem;
+  color: #2d6a4f;
+  font-weight: 600;
+  margin-bottom: 0.5rem;  /* añadido margen inferior */
+}
+
+/* 7. Área de acciones */
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;  /* aumentado desde 0.5rem */
+  padding: 1rem 1.25rem;  /* aumentado desde 0.75rem 1rem */
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.card-actions .btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.card-actions .btn:first-child {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.card-actions .btn:first-child:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);  /* añadido efecto de hover */
+}
+
+.card-actions .ml20 {
+  background-color: #40916c;
+  color: #fff;
+}
+
+.card-actions .ml20:hover {
+  background-color: #31724a;
+  transform: translateY(-2px);  /* añadido efecto de hover */
+}
+
+/* 8. Responsive */
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;  /* reducido el gap en pantallas medianas */
+    padding: 0 1rem;  /* reducido el padding lateral */
   }
   
+  .card-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;  /* reducido el gap entre botones */
+  }
+  
+  .container.text-center.mt20 .btn {
+    width: 100%;
+    max-width: 300px;  /* limitado el ancho máximo */
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;  /* reducido el margen inferior */
+  }
+  
+  body {
+    padding-top: 4.5rem;  /* ajustado para pantallas pequeñas */
+  }
+  
+  .container.text-center.mt20 {
+    margin: 1.5rem 0;  /* reducido el margen */
+  }
+}
