@@ -46,7 +46,7 @@
     
         alt="Imagen de {{ e.nombre }}"
         (error)="handleImageError($event)"
-        class="specimen-image"
+        class="specimen-image3d"
         [style.width.px]="imageWidth"
         [style.height.px]="imageHeight"
         ar
@@ -71,7 +71,7 @@
   
     <!-- Área fija de acciones, fuera del scroll -->
     <div class="card-actions">
-      <button class="btn" *ngIf="e.id !== 1" (click)="eliminarEspecimen(e.id)">Eliminar</button>
+      <button class="btn"  (click)="eliminarEspecimen(e.id)">Eliminar</button>
       <button [routerLink]="'/editar-especimen/' + e.id" mat-flat-button color="primary" class="ml20">
         Actualizar
       </button>

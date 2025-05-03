@@ -41,15 +41,7 @@ export class EstacionComponent implements OnInit, OnDestroy {
   public baseUrl: string = baserUrl;
   ngOnInit(): void {
 
-    const platform = navigator.platform.toLowerCase();
-    const userAgent = navigator.userAgent.toLowerCase();
-    this.plataformaApple =
-      platform.includes('mac') ||
-      platform.includes('iphone') ||
-      platform.includes('ipad') ||
-      userAgent.includes('iphone') ||
-      userAgent.includes('ipad') ||
-      userAgent.includes('macintosh');
+   
       
     this.http.get<FileInfo[]>(`${baserUrl}/files`)
     .subscribe({
@@ -62,6 +54,7 @@ export class EstacionComponent implements OnInit, OnDestroy {
       this.cargarEstacion(numero);
     });
   }
+  
 
   cargarEstacion(numero: number | string): void {
     this.estacionService.obtenerEstacionPorNumero(numero).subscribe(

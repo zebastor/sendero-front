@@ -5,7 +5,7 @@ body {
 
 /* Opcional: efecto hover para mejorar la experiencia del usuario */
 .dropdown-menu li a:hover {
-  background-color: #f0f0f0;
+  background-color: #295f36;
 }
 
 /* Header */
@@ -27,9 +27,10 @@ body {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
-.header li a {
-=======
+
+
+
+
 
   /* Header */
   .header {
@@ -53,7 +54,6 @@ body {
   
 
 .header li a{
->>>>>>> c66502f600e85f67ae31a94d8676b027f0731f6f
   color: white;
   text-decoration: none;
   font-size: 35px;
@@ -63,8 +63,6 @@ body {
 
 .dropdown-menu li a {
   font-size: 20px;
-<<<<<<< HEAD
-=======
  }
 
  
@@ -116,9 +114,12 @@ body {
       }
 
   
+      .dropdown-menu li a {
+        font-size: 20px;
+        color: #6bb46b;
+       }
+      
   
-  
->>>>>>> c66502f600e85f67ae31a94d8676b027f0731f6f
 }
 
 .container2 {
@@ -154,13 +155,22 @@ body {
     position: absolute;           /* Se posiciona relativamente al <li> padre */
     top: 100%;                    /* Se sitúa justo debajo del enlace "Estaciones" */
     left: 0;
-    background-color: #fff;       /* Fondo blanco para la tarjeta */
+    background-color: #ffffff;       /* Fondo blanco para la tarjeta */
     border: 1px solid #ccc;       /* Borde para delimitar la tarjeta */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para darle efecto de superposición */
     padding: 10px;
     margin: 0;
     list-style: none;             /* Sin viñetas */
     z-index: 1300;                /* Asegura que se muestre encima de otros elementos */
+  }
+
+
+  li a {
+    color: #030303;
+    cursor: pointer; /* Cursor de mano para los enlaces */
+    font-size: inherit; /* Usa el mismo tamaño del elemento `li` */
+    display: block; /* Permite que se comporte como un bloque */
+    text-decoration: none;
   }
 }
 
@@ -265,5 +275,28 @@ body {
 
   .menu-toggle {
     display: flex;
+  }
+}
+
+
+/* styles.css o componente.css */
+
+
+/* Mostrar el menú cuando el padre está activo */
+.nav-links li:hover > .dropdown-menu,
+.nav-links li.active > .dropdown-menu {
+  display: block;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static; /* No usar absolute en móviles */
+    background-color: #5e8c6a;
+    width: 100%;
+  }
+
+  .nav-links.active .dropdown-menu {
+    display: block;
   }
 }

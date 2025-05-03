@@ -15,14 +15,47 @@
   margin: 0;
   padding: 0;
 }
+.imagenes {
+  max-width: 600px; /* Ancho máximo adaptable */
+  margin: 2rem auto; /* Centrado automático */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra sutil */
+  overflow: hidden; /* Contiene la imagen */
+  transition: transform 0.3s ease; /* Efecto hover */
+}
 
+.imagenes:hover {
+  transform: translateY(-5px); /* Levantar tarjeta al pasar el mouse */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+.imagenes img {
+  width: 100%; /* Ajuste completo */
+  height: auto; /* Mantener proporción */
+  display: block; /* Eliminar espacio inferior */
+}
+
+.container2 {
+  padding: 1.5rem; /* Espaciado interno */
+  background: white; /* Fondo blanco */
+  border-top: 1px solid #eee; /* Separación visual */
+}
+
+.container2 p {
+  font-size: 1.2rem; /* Tamaño de texto */
+  color: #333; /* Color de texto oscuro */
+  line-height: 1.6; /* Espaciado entre líneas */
+  margin: 0; /* Eliminar margen predeterminado */
+}
 body {
   font-family: 'Poppins', Arial, sans-serif;
-  background-color: #20664b;
+  background-color: #20664b00;
   color: var(--text-main);
   line-height: 1.6;
   scroll-behavior: smooth;
+  margin-top: 20vh;
 }
+
 
 /* Container principal */
 .container2 {
@@ -59,11 +92,6 @@ body {
   transition: background-color 0.3s ease, transform 0.2s;
 }
 
-<<<<<<< HEAD
-.container2 button:hover {
-  background-color: var(--primary-dark);
-  transform: translateY(-2px);
-=======
 
 .dropdown-menu li a {
   font-size: 20px;
@@ -116,7 +144,6 @@ body {
         list-style: none;             /* Sin viñetas */
         z-index: 1300;                /* Asegura que se muestre encima de otros elementos */
       }
->>>>>>> c66502f600e85f67ae31a94d8676b027f0731f6f
 }
 
 /* Mapa */

@@ -1,2 +1,2 @@
-let baserUrl = 'http://localhost:8080';
+let baserUrl = 'https://sendero.clean-air-chicago.com';
 export default baserUrl;
