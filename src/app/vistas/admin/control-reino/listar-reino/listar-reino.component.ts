@@ -25,7 +25,7 @@ export class ListarReinoComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        Swal.fire('Error','Error al cargar las estaciones','error');
+        Swal.fire('Error','Error al cargar los reinos','error');
       }
     )
   }
@@ -33,8 +33,8 @@ export class ListarReinoComponent implements OnInit {
  
    eliminarReino(id:any){
      Swal.fire({
-       title:'Eliminar Estacion',
-       text:'¿Estás seguro de eliminar la estacion?',
+       title:'Eliminar Reino',
+       text:'¿Estás seguro de eliminar el reino?',
        icon:'warning',
        showCancelButton:true,
        confirmButtonColor:'#3085d6',
@@ -46,10 +46,10 @@ export class ListarReinoComponent implements OnInit {
          this.reinoService.eliminarReino(id).subscribe(
            (data) => {
              this.reinos = this.reinos.filter((reino:any) => reino.id != id);
-             Swal.fire('Estacion eliminada','La estacion ha sido eliminada de la base de datos','success');
+             Swal.fire('Reino eliminado','El reino ha sido eliminado de la base de datos','success');
            },
            (error) => {
-             Swal.fire('Error','Error al eliminar la estacion, revisa que no hayan especimenes asociados a este reino','error');
+             Swal.fire('Error','Error al eliminar el reino, revisa que no hayan especimenes asociados a este reino','error');
            }
          )
        }
