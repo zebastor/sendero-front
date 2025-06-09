@@ -1,0 +1,186 @@
+<!-- Botón flotante para abrir el panel -->
+<button 
+  class="accessibility-toggle-btn"
+  (click)="togglePanel()"
+  [attr.aria-label]="isOpen ? 'Cerrar panel de accesibilidad' : 'Abrir panel de accesibilidad'"
+  matRipple>
+  <mat-icon>{{ isOpen ? 'close' : 'accessibility' }}</mat-icon>
+</button>
+
+<!-- Panel de accesibilidad -->
+<div class="accessibility-panel" [class.open]="isOpen" role="dialog" aria-labelledby="accessibility-title">
+  <mat-card class="accessibility-card">
+    <mat-card-header>
+      <mat-card-title id="accessibility-title">
+        <mat-icon>accessibility</mat-icon>
+        Panel de Accesibilidad
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Controles principales -->
+      <div class="control-section">
+        <h3>Apariencia</h3>
+        
+        <!-- Modo oscuro -->
+        <div class="control-item">
+          <mat-slide-toggle 
+            [checked]="settings.darkMode"
+            (change)="toggleDarkMode()"
+            aria-label="Activar modo oscuro">
+            <mat-icon>dark_mode</mat-icon>
+            Modo Oscuro
+          </mat-slide-toggle>
+        </div>
+
+        <!-- Escala de grises -->
+        <div class="control-item">
+          <mat-slide-toggle 
+            [checked]="settings.grayscale"
+            (change)="toggleGrayscale()"
+            aria-label="Activar escala de grises">
+            <mat-icon>filter_b_and_w</mat-icon>
+            Escala de Grises
+          </mat-slide-toggle>
+        </div>
+
+        <!-- Alto contraste -->
+        <div class="control-item">
+          <mat-slide-toggle 
+            [checked]="settings.highContrast"
+            (change)="toggleHighContrast()"
+            aria-label="Activar alto contraste">
+            <mat-icon>contrast</mat-icon>
+            Alto Contraste
+          </mat-slide-toggle>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <!-- Controles de texto -->
+      <div class="control-section">
+        <h3>Texto</h3>
+        
+        <!-- Tamaño de fuente -->
+        <div class="control-item">
+          <label for="font-size-select">
+            <mat-icon>format_size</mat-icon>
+            Tamaño de Letra
+          </label>
+          <mat-select 
+            id="font-size-select"
+            [value]="settings.fontSize"
+            (selectionChange)="onFontSizeChange($event.value)"
+            aria-label="Seleccionar tamaño de letra">
+            <mat-option *ngFor="let option of fontSizeOptions" [value]="option.value">
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+        </div>
+
+        <!-- Subrayar enlaces -->
+        <div class="control-item">
+          <mat-slide-toggle 
+            [checked]="settings.underlineLinks"
+            (change)="toggleUnderlineLinks()"
+            aria-label="Subrayar todos los enlaces">
+            <mat-icon>format_underlined</mat-icon>
+            Subrayar Enlaces
+          </mat-slide-toggle>
+        </div>
+
+        <!-- Espaciado de texto -->
+        <div class="control-item">
+          <mat-slide-toggle 
+            [checked]="settings.textSpacing"
+            (change)="toggleTextSpacing()"
+            aria-label="Aumentar espaciado del texto">
+            <mat-icon>format_line_spacing</mat-icon>
+            Espaciado de Texto
+          </mat-slide-toggle>
+        </div>
+
+        <!-- Resaltar enlaces -->
+        <div class="control-item">
+          <mat-slide-toggle 
+            [checked]="settings.highlightLinks"
+            (change)="toggleHighlightLinks()"
+            aria-label="Resaltar enlaces">
+            <mat-icon>highlight</mat-icon>
+            Resaltar Enlaces
+          </mat-slide-toggle>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <!-- Controles de navegación -->
+      <div class="control-section">
+        <h3>Navegación</h3>
+        
+        <!-- Zoom -->
+        <div class="control-item zoom-control">
+          <label>
+            <mat-icon>zoom_in</mat-icon>
+            Zoom: {{ settings.zoom }}%
+          </label>
+          <div class="zoom-buttons">
+            <button mat-icon-button (click)="decreaseZoom()" aria-label="Disminuir zoom">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span class="zoom-display">{{ settings.zoom }}%</span>
+            <button mat-icon-button (click)="increaseZoom()" aria-label="Aumentar zoom">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cursor grande -->
+        <div class="control-item">
+          <mat-slide-toggle 
+            [checked]="settings.bigCursor"
+            (change)="toggleBigCursor()"
+            aria-label="Activar cursor grande">
+            <mat-icon>mouse</mat-icon>
+            Cursor Grande
+          </mat-slide-toggle>
+        </div>
+
+        <!-- Reducir movimiento -->
+        <div class="control-item">
+          <mat-slide-toggle 
+            [checked]="settings.reducedMotion"
+            (change)="toggleReducedMotion()"
+            aria-label="Reducir animaciones">
+            <mat-icon>motion_photos_off</mat-icon>
+            Reducir Movimiento
+          </mat-slide-toggle>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <!-- Botón de reset -->
+      <div class="control-section">
+        <button 
+          mat-raised-button 
+          color="warn" 
+          (click)="resetSettings()"
+          class="reset-button"
+          aria-label="Restablecer todas las configuraciones de accesibilidad">
+          <mat-icon>refresh</mat-icon>
+          Restablecer Todo
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- Overlay para cerrar el panel -->
+<div 
+  class="accessibility-overlay" 
+  [class.visible]="isOpen"
+  (click)="togglePanel()"
+  aria-hidden="true">
+</div> 

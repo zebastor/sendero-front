@@ -268,4 +268,173 @@ form{ width: 100%; }
         .form-box { padding: 20px; }
         .toggle-panel h1 { font-size: 30px; }
     }
+
+/* ==========================================================================
+   ESTILOS DE ACCESIBILIDAD PARA LOGIN
+   ========================================================================== */
+
+/* Mensajes de error accesibles */
+.error-message {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+  display: block;
+  min-height: 16px;
+}
+
+.high-contrast .error-message {
+  color: #ff0000 !important;
+  background-color: #ffffff !important;
+  padding: 2px 4px;
+  border: 1px solid #ff0000;
+}
+
+/* Estados de error en campos */
+input[aria-invalid="true"] {
+  border-color: #d32f2f !important;
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2) !important;
+}
+
+.high-contrast input[aria-invalid="true"] {
+  border-color: #ff0000 !important;
+  border-width: 3px !important;
+  box-shadow: none !important;
+}
+
+/* Mejorar visibilidad de focus en formularios */
+.input-box input:focus {
+  outline: 3px solid var(--color-focus, #ffeb3b) !important;
+  outline-offset: 2px !important;
+  border-color: var(--color-primary, #1976d2) !important;
+}
+
+/* Estados hover mejorados para botones */
+.btn:hover:not([disabled]) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:focus {
+  outline: 3px solid var(--color-focus, #ffeb3b) !important;
+  outline-offset: 2px !important;
+}
+
+/* Estados de botones activos */
+.btn[aria-selected="true"] {
+  background-color: var(--color-primary, #1976d2) !important;
+  color: white !important;
+}
+
+/* Mejorar contraste de texto en modo oscuro */
+.dark-mode .container {
+  background-color: var(--color-background, #121212);
+  color: var(--color-text, #ffffff);
+}
+
+.dark-mode .form-box {
+  background-color: var(--color-surface, #1e1e1e);
+  border: 1px solid var(--color-text-secondary, #b3b3b3);
+}
+
+.dark-mode input {
+  background-color: var(--color-surface, #1e1e1e);
+  color: var(--color-text, #ffffff);
+  border-color: var(--color-text-secondary, #b3b3b3);
+}
+
+/* Espaciado mejorado para texto */
+.text-spacing h1,
+.text-spacing p,
+.text-spacing label {
+  line-height: 1.8 !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Cursor grande */
+.big-cursor .btn,
+.big-cursor input,
+.big-cursor a {
+  cursor: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2c-1.1 0-2 .9-2 2v12h-12c-1.1 0-2 .9-2 2s.9 2 2 2h12v12c0 1.1.9 2 2 2s2-.9 2-2v-12h12c1.1 0 2-.9 2-2s-.9-2-2-2h-12v-12c0-1.1-.9-2-2-2z" fill="white" stroke="black" stroke-width="1"/></svg>') 16 16, pointer !important;
+}
+
+/* Animaciones reducidas */
+.reduced-motion .btn,
+.reduced-motion .container,
+.reduced-motion input {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Enlaces resaltados */
+.highlight-links a {
+  background-color: #ffff99 !important;
+  color: #000000 !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  font-weight: bold !important;
+}
+
+/* Enlaces subrayados */
+.underline-links a {
+  text-decoration: underline !important;
+}
+
+/* Mejoras responsivas */
+@media (max-width: 768px) {
+  .btn {
+    min-height: 48px;
+    font-size: 16px;
+  }
+  
+  input {
+    min-height: 48px;
+    font-size: 16px;
+  }
+  
+  .error-message {
+    font-size: 14px;
+  }
+}
+
+/* Asegurar que todos los elementos interactivos sean accesibles */
+button, input, a {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Estados de focus mejorados para navegación por teclado */
+*:focus-visible {
+  outline: 3px solid var(--color-focus, #ffeb3b) !important;
+  outline-offset: 2px !important;
+}
+
+/* Indicadores de carga accesibles */
+.loading {
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading::before {
+  content: 'Cargando...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  font-weight: bold;
+  color: var(--color-primary, #1976d2);
+}
     
